@@ -1,0 +1,9 @@
+.scroll-content {
+  background-color: $app-background-color;
+}
+.view-login {
+  padding: $default-spacing;
+}
+.has-gradient-background {
+  @extend %app-gradient-background;
+}

@@ -1,0 +1,25 @@
+.login-logomark {
+  margin: 1rem;
+  svg {
+    width: 100%;
+    height: 80px;
+  }
+}
+
+.login-logotype {
+  margin-bottom: 2rem;
+  svg {
+    width: 140px;
+    height: 50px;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+.icon-inline {
+  display: inline-block;
+  margin-right: 15px;
+  svg {
+    vertical-align: middle;
+  }
+}

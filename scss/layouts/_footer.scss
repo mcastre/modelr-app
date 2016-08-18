@@ -1,0 +1,15 @@
+.login-footer {
+  color: white;
+  text-align: center;
+  .button.button-light.button-clear {
+    margin-bottom: 1rem;
+    color: white;
+  }
+}
+.login-footer-divider {
+  display: block;
+  width: 5rem;
+  height: 1px;
+  background-color: rgba(white, 0.8);
+  margin: $default-spacing auto;
+}

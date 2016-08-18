@@ -1,0 +1,22 @@
+.login-form-wrapper {
+  margin-top: 1rem;
+  .item-floating-label {
+    background-color: rgba(black, 0.1);
+
+  }
+  .item {
+    border: 0;
+  }
+  .item-input input {
+    color: white;
+  }
+  .item-floating-label .input-label.has-input {
+    color: rgba(white, 0.5);
+  }
+}
+.modal.modal-top-peek {
+  margin-top: 2rem;
+}
+.modal.login-modal {
+  @extend %app-gradient-background;
+}

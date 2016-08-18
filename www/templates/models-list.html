@@ -1,0 +1,25 @@
+<ion-view view-title="My Models">
+
+  <ion-content class="padding has-tabs">
+    <div class="list card" ng-repeat="model in models.list">
+      <div class="item">
+        <!-- <img src="mcfly.jpg"> -->
+        <h2><a href="" ng-click="models.viewProject(model)">{{model.projectName}}</a></h2>
+        <p>{{model.builder}} - {{model.startDate | date}}</p>
+      </div>
+
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{model.image}}">
+        <p>{{model.manufacturer}}</p>
+        <p><i>{{model.class}}</i></p>
+        <h3>Color Scheme</h3>
+        <ul class="list">
+          <li class="item" ng-repeat="paint in model.paints">
+            {{paint}}
+          </li>
+        </ul>
+        <p>{{model.description}}</p>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

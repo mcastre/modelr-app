@@ -1,0 +1,23 @@
+<ion-view view-title="Login" hide-tab-bar hide-nav-bar="true">
+  <ion-content class="view-login has-gradient-background">
+    <header class="login-header">
+      <div ng-include="'img/modelr-logomark-white.svg'" class="login-logomark"></div>
+      <div ng-include="'img/modelr-logotype-white.svg'" class="login-logotype"></div>
+      <p class="login-subheading">Keep track of everything your model needs.</p>
+    </header>
+    <div class="list">
+      <button class="button button-block button-facebook" ng-click="login.facebookLogin()">
+        <div ng-include="'img/facebook-mark-white.svg'" class="icon-inline"></div>
+        Sign In With Facebook
+      </button>
+      <button class="button button-block button-email" ng-click="login.openLoginModal()">
+        <div ng-include="'img/email-icon-dark.svg'" class="icon-inline"></div>
+        Sign In With Email
+      </button>      
+    </div>
+    <footer class="login-footer">
+      <span class="login-footer-divider"></span>
+      <a href="" class="button button-clear button-light" ng-click="login.openLoginModal()">Don't have an account? Sign up here</a>
+    </footer>
+  </ion-content>
+</ion-view>

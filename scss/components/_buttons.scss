@@ -1,0 +1,28 @@
+a {
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+.bar .button.button-clear, .bar button.button-clear {
+  font-weight: bold;
+}
+.button-facebook {
+  background-color: $facebook-blue;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: darken($facebook-blue, 2%);
+    color: white;
+  }
+}
+
+.button-email {
+  background-color: $app-light-gray;
+  color: $app-medium-gray;
+}
+.link-basic {
+  color: white;
+  text-decoration: underline;
+}

@@ -1,0 +1,7 @@
+%app-gradient-background {
+  background: #185a9d;
+  background: -moz-linear-gradient(45deg,  #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
+  background: -webkit-linear-gradient(45deg,  #185a9d 0%,#1e8ba4 19%,#22a9a9 33%,#23b4aa 40%,#2bf3b4 92%);
+  background: linear-gradient(45deg,  #185a9d 0%,#1e8ba4 19%,#22a9a9 33%,#23b4aa 40%,#2bf3b4 92%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#185a9d', endColorstr='#2bf3b4',GradientType=1 );
+}
