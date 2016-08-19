@@ -1,0 +1,36 @@
+<ion-view hide-tab-bar hide-nav-bar="true">
+  <ion-content scroll="false">
+    <ion-slides options="welcome.sliderOptions" slider="welcome.data.slider">
+      <ion-slide-page>
+        <div class="welcome-background-one">
+          <header class="login-header">
+            <h1 class="welcome-title" ng-if="welcome.userData">Hello {{welcome.userName}}, Welcome to Modelr!</h1>
+            <h1 class="welcome-title" ng-if="!welcome.userData">Hello and welcome to Modelr!</h1>
+          </header>
+          <article class="padding">
+            <p>Would you like to upload a profile picture?</p>
+            <button class="button button-block button-outline button-light" ng-click="welcome.upload()">Upload From Camera</button>
+          </div>
+          <p ng-if="welcome.images">Do you want to use this photo?</p>
+          <div class="row" ng-repeat="image in welcome.images">
+            <div class="col col-25">
+                <a href="" ng-click="welcome.setProfileImage()"><img ng-src="data:image/jpeg;base64,{{welcome.images[$index].image}}" width="100%" /></a>
+            </div>
+          </div>
+          </article>
+        </div>
+      </ion-slide-page>
+      <ion-slide-page>
+        <div class="welcome-background-two">
+          <header class="login-header">
+            <h1 class="welcome-title">Slide 2</h1>
+          </header>
+          <article class="padding">
+            <p>Swipe to learn more</p>
+            <button class="button button-block button-outline button-light" ng-click="welcome.goToHome()">Get Started</button>
+          </article>
+        </div>
+      </ion-slide-page>
+    </ion-slides>
+  </ion-content>
+</ion-view>

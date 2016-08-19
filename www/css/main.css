@@ -1,9 +1,21 @@
-.modal.login-modal, .has-gradient-background {
+.modal.login-modal, .has-gradient-background, .welcome-background-two {
   background: #185a9d;
   background: -moz-linear-gradient(45deg, #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
   background: -webkit-linear-gradient(45deg, #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
   background: linear-gradient(45deg, #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#185a9d', endColorstr='#2bf3b4',GradientType=1 ); }
+
+.welcome-background-one {
+  background: #480048;
+  background: -moz-linear-gradient(45deg, #480048 0%, #c04848 100%);
+  background: -webkit-linear-gradient(45deg, #480048 0%, #c04848 100%);
+  background: linear-gradient(45deg, #480048 0%, #c04848 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#480048', endColorstr='#c04848',GradientType=1 ); }
+
+.welcome-title {
+  font-size: 22px;
+  color: white;
+  text-align: center; }
 
 body, h1, h2, h3, h4, h5, h6, button {
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif; }
@@ -12,9 +24,6 @@ a {
   text-decoration: none; }
   a:hover, a:focus {
     text-decoration: none; }
-
-.bar .button.button-clear, .bar button.button-clear {
-  font-weight: bold; }
 
 .button-facebook {
   background-color: #3A589B;
@@ -34,6 +43,9 @@ a {
 .card .list > .item {
   padding: 14px 0;
   font-size: 14px; }
+
+.item-input {
+  padding: 6px 10px; }
 
 .login-logomark {
   margin: 1rem; }
@@ -55,6 +67,10 @@ a {
   .icon-inline svg {
     vertical-align: middle; }
 
+.bar-user-avatar img {
+  width: 32px;
+  border-radius: 100rem; }
+
 .login-form-wrapper {
   margin-top: 1rem; }
   .login-form-wrapper .item-floating-label {
@@ -68,6 +84,11 @@ a {
 
 .modal.modal-top-peek {
   margin-top: 2rem; }
+
+.login-form-wrapper .item-stacked-label {
+  background-color: rgba(0, 0, 0, 0.1); }
+  .login-form-wrapper .item-stacked-label input {
+    background: none; }
 
 .login-header {
   margin-top: 5rem;
@@ -85,7 +106,8 @@ a {
   .login-modal-header .subtitle {
     display: inline-block;
     color: white;
-    font-size: 16px; }
+    font-size: 16px;
+    width: 75%; }
   .login-modal-header .button-clear.button-clear {
     float: right;
     color: white;
@@ -96,6 +118,20 @@ a {
 
 .view-login {
   padding: 10px; }
+
+.welcome-background-one {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+
+.welcome-background-two {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
 
 .login-footer {
   color: white;

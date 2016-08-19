@@ -1,6 +1,17 @@
 angular.module('modelrApp')
-.controller('ModelsListCtrl', ['$state', 'AuthSvc', function ModelsListCtrl ($state, AuthSvc) {
+.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', function ModelsListCtrl ($state, AuthSvc, $ionicLoading) {
   var models = this;
+
+  models.loadingProperties = {
+    template: 'Logging In...',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  };
+
+  $ionicLoading.show(models.loadingProperties); // Loading
+
   models.list = [
     {
       projectName: 'UH-1D Huey Gunship',
@@ -34,7 +45,7 @@ angular.module('modelrApp')
         'Flat Light Ghost Gray'
       ],
       description: 'The Boeing E/A-18 G Growler was designed to satisfy a specific U.S. Navy need: have a specialized, carrier-based electronic warfare aircraft to replace the not more updated Grumman EA-6B Prowler. The Growler is directly derived from the tandem-seat fighter F/A-18 F Super Hornet, which keeps all main aerodynamic characteristics. Thanks to the General Electric engines the Growler is able to reach a maximum speed of mach 1.8, and its flight performance is similar to that of the main carrier-based aircrafts. The crew consists of the pilot, and in tandem, the WSO (Weapon System Officer). Instead of 20 mm cannon of the F/A-18, the Growler has mounted dedicated electronic warfare equipment. Furthermore, in its hard points, the Growler is able to carry additional high and low band jamming pods, additional fuel tanks and AIM-120 AMRAAM missles.'
-    }
+     }
   ];
 
   firebase.auth().getRedirectResult().then(function(result) {
@@ -46,10 +57,14 @@ angular.module('modelrApp')
     console.log(error);
   });
 
+  models.user = AuthSvc.$getAuth();
+
   AuthSvc.$onAuthStateChanged(function(authData) {
     if (authData) {
+      $ionicLoading.hide();
       console.log('Logged in', authData);
     } else {
+      $ionicLoading.hide();
       console.log('Logged out');
       $state.go('login');
     }
