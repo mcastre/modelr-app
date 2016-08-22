@@ -23,3 +23,11 @@
   right: 0;
   @extend %app-gradient-background;
 }
+.slider-page {
+  padding: $default-spacing;
+  .content {
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+}

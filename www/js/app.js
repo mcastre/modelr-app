@@ -10,11 +10,11 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova'])
       // Don't remove this line unless you know what you are doing. It stops the viewport
       // from snapping when text inputs are focused. Ionic handles this internally for
       // a much nicer keyboard experience.
-      cordova.plugins.Keyboard.disableScroll(true);
+      //cordova.plugins.Keyboard.disableScroll(true);
     }
     if(window.StatusBar) {
       StatusBar.styleDefault();
-    }    
+    }
   });
 })
 
@@ -33,17 +33,43 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova'])
     controller: 'WelcomeCtrl',
     controllerAs: 'welcome'
   })
-  .state('models', {
-    url: '/models',
-    templateUrl: 'templates/models-list.html',
-    controller: 'ModelsListCtrl',
-    controllerAs: 'models'
+  .state('tabs', {
+    url: '/tabs',
+    templateUrl: 'templates/tabs.html',
+    abstract: true,
+    controller: 'TabsCtrl',
+    controllerAs: 'tabs'
   })
-  .state('model', {
-    url: '/model',
-    templateUrl: 'templates/model-detail.html',
-    controller: 'ModelDetailCtrl',
-    controllerAs: 'model'
+  // Tab Views
+  .state('tabs.models', {
+    url: '/models',
+    views: {
+      'models-tab': {
+        templateUrl: 'templates/models-home.html',
+        controller: 'ModelsListCtrl',
+        controllerAs: 'models'
+      }
+    }
+  })
+  .state('tabs.inventory', {
+    url: '/inventory',
+    views: {
+      'inventory-tab': {
+        templateUrl: 'templates/inventory-home.html',
+        controller: 'InventoryCtrl',
+        controllerAs: 'inventory',
+      }
+    }
+  })
+  .state('tabs.resources', {
+    url: '/resources',
+    views: {
+      'resources-tab': {
+        templateUrl: 'templates/resources-home.html',
+        controller: 'ResourcesCtrl',
+        controllerAs: 'resources',
+      }
+    }
   });
 
   $urlRouterProvider.otherwise('/login');

@@ -11,16 +11,19 @@
 }
 .login-modal-header {
   padding: $default-spacing;
-  margin-top: 3rem;
+  margin-top: 2rem;
+  @include clearfix;
   .subtitle {
-    display: inline-block;
     color: white;
     font-size: $app-base-font-size;
-    width: 75%;
   }
   .button-clear.button-clear {
     float: right;
     color: white;
     margin-top: -10px;
   }
+}
+.login-modal-subtitle {
+  float: left;
+  width: 75%;
 }

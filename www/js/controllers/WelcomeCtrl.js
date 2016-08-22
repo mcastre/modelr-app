@@ -3,27 +3,31 @@ angular.module('modelrApp')
 
   var welcome = this;
   var user = AuthSvc.$getAuth();
+  var userRef = firebase.database().ref('users/' + user.uid);
+  var profileImagesArray = $firebaseArray(userRef);
+
+  welcome.images = [];
+
 
   $ionicHistory.clearHistory();
 
-  welcome.images = [];
-  welcome.syncArray = [];
-
   AuthSvc.$onAuthStateChanged(function(authData) {
     if (authData) {
-      welcome.userData = authData;
-      welcome.userName = authData.displayName;
-      console.log('Logged in', authData);
       $ionicLoading.hide();
+      welcome.images = profileImagesArray;
     } else {
-      console.log('Logged out');
       $ionicLoading.hide();
       $state.go('login');
     }
   });
 
   if (user) {
-    // success
+    userRef.on('value', function(snap) {
+      welcome.userData = snap.val();
+      welcome.userName = welcome.userData.displayName;
+      welcome.profileImage = welcome.userData.photoURL;
+    });
+    welcome.images = profileImagesArray;
   } else {
     $state.go('login');
   }
@@ -38,15 +42,16 @@ angular.module('modelrApp')
     $scope.slider = data.slider;
   });
 
-  function writeUserProfileImage(userID, image) {
-    firebase.database().ref('users/' + userID).update({
-      photoURL: image
-    });
+  function writeUserProfileImage(image) {
+    userRef.update({ photoURL: image });
   }
+
+
 
   // CAMERA UPLOAD
 
   welcome.upload = function() {
+    welcome.images = [];
     var options = {
       quality : 75,
       destinationType : Camera.DestinationType.DATA_URL,
@@ -59,14 +64,14 @@ angular.module('modelrApp')
       saveToPhotoAlbum: false
     };
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      writeUserProfileImage(welcome.userData.uid, imageData);
+      writeUserProfileImage(imageData);
     }, function(error) {
       console.log(error);
     });
   };
 
   welcome.goToHome = function () {
-    $state.go('models');
+    $state.go('tabs.models');
   };
 
 }]);

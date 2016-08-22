@@ -1,34 +1,39 @@
-<ion-view hide-tab-bar hide-nav-bar="true">
+<ion-view>
   <ion-content scroll="false">
     <ion-slides options="welcome.sliderOptions" slider="welcome.data.slider">
       <ion-slide-page>
-        <div class="welcome-background-one">
+        <div class="slider-page welcome-background-one">
           <header class="login-header">
-            <h1 class="welcome-title" ng-if="welcome.userData">Hello {{welcome.userName}}, Welcome to Modelr!</h1>
+            <h1 class="welcome-title styled-text" ng-if="welcome.userData">Hello {{welcome.userName}}, <br>Welcome to Modelr!</h1>
             <h1 class="welcome-title" ng-if="!welcome.userData">Hello and welcome to Modelr!</h1>
           </header>
-          <article class="padding">
-            <p>Would you like to upload a profile picture?</p>
-            <button class="button button-block button-outline button-light" ng-click="welcome.upload()">Upload From Camera</button>
-          </div>
-          <p ng-if="welcome.images">Do you want to use this photo?</p>
-          <div class="row" ng-repeat="image in welcome.images">
-            <div class="col col-25">
-                <a href="" ng-click="welcome.setProfileImage()"><img ng-src="data:image/jpeg;base64,{{welcome.images[$index].image}}" width="100%" /></a>
-            </div>
-          </div>
+          <article class="content">
+            <p>Modelr is a handy tool to have in your modeling workshop. <br><br>Keep track of current projects, running inventory of supplies and materials, even add resources like Youtube videos, reference images, tutorials, etc. all in one beautiful app on your favorite device.</p>
+            <br><br>
+            <p>Swipe right to set up a profile image, and thanks for using Modelr!</p>
           </article>
         </div>
       </ion-slide-page>
       <ion-slide-page>
-        <div class="welcome-background-two">
+        <div class="slider-page welcome-background-two">
           <header class="login-header">
-            <h1 class="welcome-title">Slide 2</h1>
+            <h1 class="welcome-title styled-text">Set Up Your Profile</h1>
           </header>
-          <article class="padding">
-            <p>Swipe to learn more</p>
-            <button class="button button-block button-outline button-light" ng-click="welcome.goToHome()">Get Started</button>
+          <article class="content">
+            <p ng-if="!welcome.images.length">Would you like to upload a profile picture?</p>
+            <div ng-if="welcome.profileImage">
+              <p>Do you want to use this photo?</p>
+              <div class="profile-avatar-large">
+                <img ng-src="data:image/jpeg;base64,{{welcome.profileImage}}" width="100%" />
+              </div>
+            </div>
           </article>
+          <footer class="slider-page-footer">
+            <button class="button button-block button-stable button-spaced-vertical" ng-click="welcome.upload()">
+              {{ welcome.profileImage ? 'Take Another' : 'Upload From Camera'}}
+            </button>
+            <button class="button button-block button-positive" ng-click="welcome.goToHome()">Yes, Let's Go!</button>
+          </footer>
         </div>
       </ion-slide-page>
     </ion-slides>

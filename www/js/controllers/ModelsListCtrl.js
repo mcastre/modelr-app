@@ -71,7 +71,7 @@ angular.module('modelrApp')
   });
 
   models.viewProject = function (model) {
-    $state.go('model');
+    //$state.go('model');
   };
 
   models.logout = function () {

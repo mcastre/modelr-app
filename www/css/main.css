@@ -13,12 +13,18 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#480048', endColorstr='#c04848',GradientType=1 ); }
 
 .welcome-title {
-  font-size: 22px;
+  font-size: 32px;
   color: white;
   text-align: center; }
 
 body, h1, h2, h3, h4, h5, h6, button {
   font-family: -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", sans-serif; }
+
+.styled-text {
+  font-family: 'Sanchez', serif; }
+
+p, li, a {
+  font-size: 16px; }
 
 a {
   text-decoration: none; }
@@ -39,6 +45,13 @@ a {
 .link-basic {
   color: white;
   text-decoration: underline; }
+
+.close-modal-button {
+  float: right;
+  width: 20%; }
+
+.button-spaced-vertical {
+  margin: 2rem 0; }
 
 .card .list > .item {
   padding: 14px 0;
@@ -69,6 +82,10 @@ a {
 
 .bar-user-avatar img {
   width: 32px;
+  border-radius: 100rem; }
+
+.profile-avatar-large img {
+  width: 200px;
   border-radius: 100rem; }
 
 .login-form-wrapper {
@@ -102,16 +119,25 @@ a {
 
 .login-modal-header {
   padding: 10px;
-  margin-top: 3rem; }
+  margin-top: 2rem;
+  *zoom: 1; }
+  .login-modal-header:before, .login-modal-header:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+  .login-modal-header:after {
+    clear: both; }
   .login-modal-header .subtitle {
-    display: inline-block;
     color: white;
-    font-size: 16px;
-    width: 75%; }
+    font-size: 16px; }
   .login-modal-header .button-clear.button-clear {
     float: right;
     color: white;
     margin-top: -10px; }
+
+.login-modal-subtitle {
+  float: left;
+  width: 75%; }
 
 .scroll-content {
   background-color: #e8e8e8; }
@@ -133,6 +159,13 @@ a {
   left: 0;
   right: 0; }
 
+.slider-page {
+  padding: 10px; }
+  .slider-page .content {
+    color: white;
+    text-align: center;
+    padding: 20px; }
+
 .login-footer {
   color: white;
   text-align: center; }
@@ -146,3 +179,6 @@ a {
   height: 1px;
   background-color: rgba(255, 255, 255, 0.8);
   margin: 10px auto; }
+
+.slider-page-footer {
+  margin-top: 2rem; }

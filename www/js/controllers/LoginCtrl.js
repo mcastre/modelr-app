@@ -6,7 +6,7 @@ angular.module('modelrApp')
 
   login.newUserSetUp = false;
   login.loadingProperties = {
-    template: 'Loggin In...',
+    template: 'Logging In...',
     animation: 'fade-in',
     showBackdrop: true,
     maxWidth: 200,
@@ -68,7 +68,7 @@ angular.module('modelrApp')
       if (login.newUserSetUp) {
         return;
       } else {
-        $state.go('models');
+        $state.go('tabs.models');
       }
     } else {
       console.log('Logged out');

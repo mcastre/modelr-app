@@ -13,3 +13,20 @@
   background: linear-gradient(45deg,  #480048 0%,#c04848 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#480048', endColorstr='#c04848',GradientType=1 );
 }
+
+
+// Clearfix
+// --------------------------------------------------
+
+@mixin clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+    line-height: 0;
+  }
+  &:after {
+    clear: both;
+  }
+}
