@@ -7,7 +7,7 @@
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
          <button class="button button-clear bar-user-avatar" title="{{tabs.user.displayName}}">
-           <img ng-src="data:image/png;base64,{{tabs.user.photoURL}}" alt="{{tabs.user.displayName}} profile image">
+           <img ng-src="data:image/jpeg;base64,{{tabs.user.photoURL}}" alt="{{tabs.user.displayName}} profile image">
          </button>
          <button class="button button-clear button-positive" ng-if="!tabs.user.photoURL && tabs.user.displayName">
            {{tabs.user.displayName}}
@@ -17,14 +17,14 @@
 
     <!-- TABS START -->
     <ion-tabs class="tabs-icon-top tabs-positive">
-      <ion-tab title="My Models" icon="ion-home" href="#/tab/models">
+      <ion-tab title="My Models" icon="ion-home" href="#/tabs/models">
         <ion-nav-view name="models-tab"></ion-nav-view>
       </ion-tab>
-      <ion-tab title="My Inventory" icon="ion-ios-plus" href="#/tab/inventory">
+      <ion-tab title="Inventory" icon="ion-ios-plus" href="#/tabs/inventory">
         <ion-nav-view name="inventory-tab"></ion-nav-view>
       </ion-tab>
-      <ion-tab title="Resources" icon="ion-ios-world" href="#/tab/resources">
-        <ion-nav-view name="contact-tab"></ion-nav-view>
+      <ion-tab title="Resources" icon="ion-ios-world" href="#/tabs/resources">
+        <ion-nav-view name="resources-tab"></ion-nav-view>
       </ion-tab>
     </ion-tabs>
 

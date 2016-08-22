@@ -85,7 +85,7 @@ a {
   border-radius: 100rem; }
 
 .profile-avatar-large img {
-  width: 200px;
+  width: 180px;
   border-radius: 100rem; }
 
 .login-form-wrapper {
@@ -108,8 +108,8 @@ a {
     background: none; }
 
 .login-header {
-  margin-top: 5rem;
-  margin-bottom: 3rem; }
+  margin-top: 4rem;
+  margin-bottom: 2rem; }
   .login-header .login-subheading {
     width: 50%;
     margin: 0 auto;
@@ -164,7 +164,7 @@ a {
   .slider-page .content {
     color: white;
     text-align: center;
-    padding: 20px; }
+    padding: 0 20px; }
 
 .login-footer {
   color: white;

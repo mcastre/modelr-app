@@ -30,9 +30,12 @@
           </article>
           <footer class="slider-page-footer">
             <button class="button button-block button-stable button-spaced-vertical" ng-click="welcome.upload()">
-              {{ welcome.profileImage ? 'Take Another' : 'Upload From Camera'}}
+              {{ welcome.profileImage ? 'Take Another' : 'Take A Picture'}}
             </button>
-            <button class="button button-block button-positive" ng-click="welcome.goToHome()">Yes, Let's Go!</button>
+            <button class="button button-block button-stable button-spaced-vertical" ng-click="welcome.uploadFromPhotos()">
+              Upload From Photos
+            </button>
+            <button class="button button-block button-positive" ui-sref="tabs.models">Yes, Let's Go!</button>
           </footer>
         </div>
       </ion-slide-page>

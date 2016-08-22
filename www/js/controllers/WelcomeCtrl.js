@@ -70,6 +70,25 @@ angular.module('modelrApp')
     });
   };
 
+  welcome.uploadFromPhotos = function() {
+    var options = {
+      quality : 75,
+      destinationType : Camera.DestinationType.DATA_URL,
+      sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
+      allowEdit : true,
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      targetWidth: 500,
+      targetHeight: 500,
+      saveToPhotoAlbum: false
+    };
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      writeUserProfileImage(imageData);
+    }, function(error) {
+      console.log(error);
+    });
+  };
+
   welcome.goToHome = function () {
     $state.go('tabs.models');
   };
