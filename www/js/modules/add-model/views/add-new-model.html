@@ -1,0 +1,66 @@
+<ion-view view-title="{{newModel.getTitle()}}">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear button-light icon ion-chevron-left" ion-wizard-previous></button>
+  </ion-nav-buttons>
+  <ion-slides options="swiperOptions" slider="swiper" ion-wizard active-slide="1">
+    <ion-slide-page ion-wizard-step class="wizard-first">
+      <ion-content>
+        <div class="wizard-page">
+          <h2 class="wizard-step-title">Let's Get Started</h2>
+          <p class="wizard-content"><small>Congrats on your new model! Let's begin by answering a few questions about the model, so you can easily keep tabs on your project from start to finish.</small></p>
+          <form name="newModel.newModelForm" class="wizard-form-wrapper">
+            <h3 class="wizard-step-title">What's the name of the model?</h3>
+            <div class="list wizard-form-input">
+              <label class="item item-input">
+                <input type="text" ng-model="newModel.build.title">
+              </label>
+            </div>
+          </form>
+          <button class="button button-block button-stable" ion-wizard-next ng-class="{'disabled': !newModel.build.title}">Next</button>
+          <button class="button button-clear button-light button-clear-center" ui-sref="tabs.models">Cancel</button>
+        </div>
+      </ion-content>
+    </ion-slide-page>
+    <ion-slide-page ion-wizard-step class="wizard-second">
+      <ion-content>
+        <div class="wizard-page">
+          <h2 class="wizard-step-title">Upload Picture</h2>
+          <p class="wizard-content"><small>Take a good picture of your model as it will be used as a cover photo. You can always change this later.</small></p>
+          <div class="profile-avatar-large" ng-if="newModel.modelImage">
+            <img ng-src="data:image/jpeg;base64,{{newModel.modelImage}}" width="100%" />
+          </div>
+          <button class="button button-block button-outline button-light" ng-click="newModel.upload()">Take Picture</button>
+          <button class="button button-block button-outline button-light" ng-click="newModel.uploadFromPhotos()">Upload From Photos</button>
+          <button class="button button-block button-stable" ion-wizard-next>Next</button>
+          <button class="button button-clear button-light button-clear-center" ui-sref="tabs.models">Cancel</button>
+        </div>
+      </ion-content>
+    </ion-slide-page>
+    <ion-slide-page ion-wizard-step class="wizard-third">
+      <ion-content>
+        <div class="wizard-page">
+          <h2 class="wizard-step-title">Model Details</h2>
+          <p class="wizard-content"><small>This section is entirely optional. You can either fill out the details, or finish adding your model.</small></p>
+          <form name="newModel.newModelForm" class="wizard-form-wrapper">
+            <div class="list wizard-form-input wizard-form-left-aligned">
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Manufacturer</span>
+                <input type="text" ng-model="newModel.build.manufacturer">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Class Type</span>
+                <input type="text" ng-model="newModel.build.classType">
+              </label>
+              <label class="item item-input item-stacked-label">
+                <span class="input-label">Description</span>
+                <input type="text" ng-model="newModel.build.description">
+              </label>
+            </div>
+          </form>
+          <button class="button button-block button-stable" ng-click="newModel.addModel()">Done!</button>
+          <button class="button button-clear button-light button-clear-center" ui-sref="tabs.models">Cancel</button>
+        </div>
+      </ion-content>
+    </ion-slide-page>
+  </ion-slides>
+</ion-view>

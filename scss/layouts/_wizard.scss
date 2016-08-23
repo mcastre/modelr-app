@@ -1,0 +1,39 @@
+.wizard-first {
+  @extend %summer-night-background;
+  .scroll-content {
+    background: none;
+  }
+}
+.wizard-second {
+  @extend %sunset-background;
+  .scroll-content {
+    background: none;
+  }
+}
+.wizard-third {
+  @extend %ocean-sky-background;
+  .scroll-content {
+    background: none;
+  }
+}
+.wizard-page {
+  position: absolute;
+  top: 44px;
+  left: 2.5%;
+  width: 95%;
+  margin-top: 2rem;
+  padding: 20px 15px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  background: rgba(white, 0.15);
+  box-shadow: 1px 2px 15px rgba(black,0.3);
+}
+.wizard-step-title {
+  font-size: $app-subheader-font-size;
+  color: white;
+  text-align: center;
+}
+.wizard-content {
+  color: white;
+  text-align: center;
+}

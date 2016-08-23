@@ -1,4 +1,4 @@
-%app-gradient-background {
+%teal-daylight-background {
   background: #185a9d;
   background: -moz-linear-gradient(45deg,  #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
   background: -webkit-linear-gradient(45deg,  #185a9d 0%,#1e8ba4 19%,#22a9a9 33%,#23b4aa 40%,#2bf3b4 92%);
@@ -6,7 +6,7 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#185a9d', endColorstr='#2bf3b4',GradientType=1 );
 }
 
-%app-gradient-background-welcome {
+%sunset-light-background {
   background: #480048;
   background: -moz-linear-gradient(45deg,  #480048 0%, #c04848 100%);
   background: -webkit-linear-gradient(45deg,  #480048 0%,#c04848 100%);
@@ -14,6 +14,29 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#480048', endColorstr='#c04848',GradientType=1 );
 }
 
+%summer-night-background {
+  background: #516395;
+  background: -moz-linear-gradient(top,  #516395 0%, #614385 100%);
+  background: -webkit-linear-gradient(top,  #516395 0%,#614385 100%);
+  background: linear-gradient(to bottom,  #516395 0%,#614385 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#516395', endColorstr='#614385',GradientType=0 )
+}
+
+%sunset-background {
+  background: #f45c43;
+  background: -moz-linear-gradient(top,  #f45c43 0%, #eb3349 100%);
+  background: -webkit-linear-gradient(top,  #f45c43 0%,#eb3349 100%);
+  background: linear-gradient(to bottom,  #f45c43 0%,#eb3349 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f45c43', endColorstr='#eb3349',GradientType=0 );
+}
+
+%ocean-sky-background {  
+  background: #4ca1af;
+  background: -moz-linear-gradient(top,  #4ca1af 0%, #2c3e50 100%);
+  background: -webkit-linear-gradient(top,  #4ca1af 0%,#2c3e50 100%);
+  background: linear-gradient(to bottom,  #4ca1af 0%,#2c3e50 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4ca1af', endColorstr='#2c3e50',GradientType=0 );
+}
 
 // Clearfix
 // --------------------------------------------------

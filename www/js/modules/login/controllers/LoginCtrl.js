@@ -4,6 +4,9 @@ angular.module('modelrApp')
   var dateNow = new Date();
   var provider = new firebase.auth.FacebookAuthProvider();
 
+  login.email = '';
+  login.password = '';
+  login.userName = '';
   login.newUserSetUp = false;
   login.loadingProperties = {
     template: 'Logging In...',
@@ -15,7 +18,7 @@ angular.module('modelrApp')
 
   $ionicLoading.show(login.loadingProperties);
 
-  $ionicModal.fromTemplateUrl('templates/login-modal-template.html', function($ionicModal) {
+  $ionicModal.fromTemplateUrl('js/modules/login/templates/login-modal-template.html', function($ionicModal) {
     login.modal = $ionicModal;
   }, {
     scope: $scope,

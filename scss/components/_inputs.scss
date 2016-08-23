@@ -4,3 +4,36 @@
     background: none;
   }
 }
+.wizard-form-wrapper {
+  margin: 2rem 0;
+}
+.wizard-form-input {
+  .item {
+    background-color: rgba(black, 0.2);
+    border: 0;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+  }
+  .item-input input {
+    text-align: center;
+    color: white;
+    font-size: $app-header-font-size;
+    padding-right: 0;
+  }
+}
+.wizard-form-left-aligned {
+  margin-left: -14px;
+  margin-right: -14px;
+  .item {
+    -webkit-border-radius: 0;
+    border-radius: 0;
+  }
+  .input-label {
+    color: rgba(white, 0.8);
+    font-size: 14px;
+  }
+  .item-stacked-label input {
+    text-align: left;
+    background-color: rgba(white, 0);
+  }
+}

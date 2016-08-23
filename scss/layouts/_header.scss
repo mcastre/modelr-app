@@ -23,7 +23,15 @@
     margin-top: -10px;
   }
 }
+.bar {
+  background-image: none !important;
+}
 .login-modal-subtitle {
   float: left;
   width: 75%;
+}
+.bar-transparent {
+  background-color: rgba(white, 0);
+  border: 0;
+  color: white;
 }

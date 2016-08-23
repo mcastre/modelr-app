@@ -5,7 +5,7 @@
   padding: $default-spacing;
 }
 .has-gradient-background {
-  @extend %app-gradient-background;
+  @extend %teal-daylight-background;
 }
 .welcome-background-one {
   position: absolute;
@@ -13,7 +13,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  @extend %app-gradient-background-welcome;
+  @extend %sunset-light-background;
 }
 .welcome-background-two {
   position: absolute;
@@ -21,7 +21,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  @extend %app-gradient-background;
+  @extend %teal-daylight-background;
 }
 .slider-page {
   padding: $default-spacing;
