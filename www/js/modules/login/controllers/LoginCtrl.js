@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('LoginCtrl', ['$scope', '$state', 'AuthSvc', '$ionicModal', '$ionicLoading', '$firebaseArray', function LoginCtrl($scope, $state, AuthSvc, $ionicModal, $ionicLoading, $firebaseArray) {
+.controller('LoginCtrl', ['$scope', '$state', 'AuthSvc', '$ionicModal', '$ionicLoading', '$firebaseArray', 'LoginSvc', function LoginCtrl($scope, $state, AuthSvc, $ionicModal, $ionicLoading, $firebaseArray, LoginSvc) {
   var login = this;
   var dateNow = new Date();
   var provider = new firebase.auth.FacebookAuthProvider();
@@ -48,6 +48,7 @@ angular.module('modelrApp')
     $ionicLoading.show(login.loadingProperties);
     AuthSvc.$signInWithEmailAndPassword(login.email, login.password).then(function(result) {
       console.log('Signed in as: ' + result.email);
+      LoginSvc.setUser(result);
       $ionicLoading.hide();
     }).catch(function(error) {
       login.errorMessage = error;

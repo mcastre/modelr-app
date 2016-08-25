@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('TabsCtrl', ['AuthSvc', '$state', '$firebaseArray', '$ionicLoading', '$ionicConfig', '$ionicTabsDelegate', function TabsCtrl(AuthSvc, $state, $firebaseArray, $ionicLoading, $ionicConfig, $ionicTabsDelegate) {
+.controller('TabsCtrl', ['AuthSvc', '$state', '$firebaseArray', '$ionicLoading', '$ionicConfig', '$ionicTabsDelegate', 'LoginSvc', function TabsCtrl(AuthSvc, $state, $firebaseArray, $ionicLoading, $ionicConfig, $ionicTabsDelegate, LoginSvc) {
 
   var tabs = this;
 
@@ -15,6 +15,10 @@ angular.module('modelrApp')
 
   tabs.currentTab = {
     index: 0
+  };
+
+  tabs.getUser = function () {
+    LoginSvc.getUser();
   };
 
   tabs.onClickTab = function (tabIndex) {
@@ -62,9 +66,7 @@ angular.module('modelrApp')
 
   // LOG OUT
   tabs.logout = function () {
-    firebase.auth().signOut();
-    console.log('Signed out...');
-    $state.go('login');
+    LoginSvc.logout();
   };
 
 }]);

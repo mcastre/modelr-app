@@ -30,12 +30,19 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f45c43', endColorstr='#eb3349',GradientType=0 );
 }
 
-%ocean-sky-background {  
+%ocean-sky-background {
   background: #4ca1af;
   background: -moz-linear-gradient(top,  #4ca1af 0%, #2c3e50 100%);
   background: -webkit-linear-gradient(top,  #4ca1af 0%,#2c3e50 100%);
   background: linear-gradient(to bottom,  #4ca1af 0%,#2c3e50 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4ca1af', endColorstr='#2c3e50',GradientType=0 );
+}
+
+%fade-black-to-transparent-scrim {
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.3) 30%, rgba(0,0,0,0.0) 100%);
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.3) 30%,rgba(0,0,0,0.0) 100%);
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.3) 30%,rgba(0,0,0,0.0) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#03000000',GradientType=0 );
 }
 
 // Clearfix

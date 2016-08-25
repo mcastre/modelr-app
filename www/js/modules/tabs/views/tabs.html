@@ -6,7 +6,7 @@
          <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
       </ion-nav-buttons>
       <ion-nav-buttons side="right">
-         <button class="button button-clear bar-user-avatar" title="{{tabs.user.displayName}}">
+         <button class="button button-clear bar-user-avatar" title="{{tabs.user.displayName}}" ng-if="tabs.user.photoURL">
            <img ng-src="data:image/jpeg;base64,{{tabs.user.photoURL}}" alt="{{tabs.user.displayName}} profile image">
          </button>
          <button class="button button-clear button-positive" ng-if="!tabs.user.photoURL && tabs.user.displayName">
@@ -44,6 +44,7 @@
       <h1 class="title">Menu</h1>
     </ion-header-bar>
     <ion-content>
+      <pre>{{ tabs.getUser() | json}}</pre>
       <ion-list>
         <ion-item menu-close>
           <button class="button button-clear button-positive" ui-sref="welcome">Add New Model</button>

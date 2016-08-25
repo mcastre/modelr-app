@@ -35,3 +35,17 @@ a {
   display: block;
   margin: 0 auto;
 }
+.button-with-icon {
+  .icon-button-icon {
+    float: left;
+    padding-right: 0.4rem;
+    height: 44px;
+    svg > g > g {
+      fill: #444;
+    }
+  }
+}
+.bar .button.back-button-white {
+  z-index: 99;
+  color: white;
+}

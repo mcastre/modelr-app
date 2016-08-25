@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.factory('AddModelSvc', ['$firebaseAuth', function AddModelSvc($firebaseAuth) {
+.factory('AddModelSvc', ['$firebaseAuth', '$state', function AddModelSvc($firebaseAuth, $state) {
 
   function addModel (model, userID) {
     var root = firebase.database().ref();

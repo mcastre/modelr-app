@@ -1,27 +1,28 @@
 angular.module('modelrApp')
 .controller('AddNewModelCtrl', ['AuthSvc', '$firebaseArray', '$cordovaCamera', 'AddModelSvc',  function AddNewModelCtrl(AuthSvc, $firebaseArray, $cordovaCamera, AddModelSvc) {
   var newModel = this;
-  var modelsRef = firebase.database().ref().child('modelsCollection');
-  var models = $firebaseArray(modelsRef);
-
   var user = AuthSvc.$getAuth();
   var userRef = firebase.database().ref('users/' + user.uid);
 
+  newModel.modelImage = '';
+  newModel.sliderOptions = {
+    loop: false,
+    effect: 'slide',
+    speed: 400
+  }
+
   if (user) {
     userRef.on('value', function(snap) {
+      var userName = snap.val().displayName;
       newModel.modelImage = snap.val().modelImage;
+      newModel.build = {
+        dateStarted: Date.now(),
+        builder: userName
+      };
     });
   } else {
     $state.go('login');
   }
-
-  newModel.build = {
-    title: ''
-  };
-
-  newModel.modelImage = '';
-
-  newModel.images = [];
 
   newModel.getTitle = function () {
     if (newModel.build.title) {
@@ -31,22 +32,14 @@ angular.module('modelrApp')
     }
   };
 
-  newModel.sliderOptions = {
-    loop: false,
-    effect: 'slide',
-    speed: 400
-  }
-
   // CAMERA UPLOAD
 
 
   function writeModelImage(image) {
     newModel.build.modelImage = image;
-    //modelsRef.update({ modelImage: image });
   }
 
   newModel.upload = function() {
-    newModel.images = [];
     var options = {
       quality : 75,
       destinationType : Camera.DestinationType.DATA_URL,
@@ -88,15 +81,10 @@ angular.module('modelrApp')
 
   // SUBMIT ADD MODEL
 
-  newModel.build = {
-    builder: 'Martín Castre',
-    dateStarted: Date.now()
-  };
-
   newModel.addModel = function () {
     AddModelSvc.addModel(angular.copy(newModel.build), user.uid);
-    newModel.newModelForm = {};
+    console.log(newModel.build);
+    newModel.build = {};
   };
 
-  newModel.images = models;
 }]);

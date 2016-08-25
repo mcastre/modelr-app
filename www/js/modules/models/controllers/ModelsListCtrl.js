@@ -1,9 +1,10 @@
 angular.module('modelrApp')
-.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray) {
+.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', 'LoginSvc', '$timeout', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray, LoginSvc, $timeout) {
   var models = this;
   var modelsRef = firebase.database().ref().child('modelsCollection');
-  models.allModels = $firebaseArray(modelsRef);
+  models.allModels = {};
 
+  // Loading
   models.loadingProperties = {
     template: 'Logging In...',
     animation: 'fade-in',
@@ -12,7 +13,38 @@ angular.module('modelrApp')
     showDelay: 0
   };
 
-  $ionicLoading.show(models.loadingProperties); // Loading
+  $ionicLoading.show(models.loadingProperties);
+
+  // Get User Models
+  function getUserModels (authData) {
+    var userModelsRef = firebase.database().ref().child('users/' + authData.uid + '/models');
+    return userModelsRef.on('child_added', function (snap) {
+      var modelID = snap.key;
+      return modelsRef.child(modelID).on('value', function (snap) {
+        $timeout(function () {
+          $ionicLoading.hide();
+          return models.allModels[modelID] = snap.val();
+        })
+      });
+    });
+  }
+
+
+  AuthSvc.$onAuthStateChanged(function(authData) {
+    if (authData) {
+      $ionicLoading.hide();
+      getUserModels(authData);
+      console.log('Logged in', authData);
+    } else {
+      $ionicLoading.hide();
+      console.log('Logged out');
+      $state.go('login');
+    }
+  });
+
+  models.userHasModels = function () {
+    return Object.keys(models.allModels).length;
+  };
 
 
   models.list = [
@@ -60,27 +92,9 @@ angular.module('modelrApp')
     console.log(error);
   });
 
-  models.user = AuthSvc.$getAuth();
-
-  AuthSvc.$onAuthStateChanged(function(authData) {
-    if (authData) {
-      $ionicLoading.hide();
-      console.log('Logged in', authData);
-    } else {
-      $ionicLoading.hide();
-      console.log('Logged out');
-      $state.go('login');
-    }
-  });
-
-  models.viewProject = function (model) {
-    //$state.go('model');
-  };
-
   models.logout = function () {
-    AuthSvc.$signOut();
+    LoginSvc.$logout();
     console.log('Signed Out...');
-    $state.go('login');
   };
 
 }]);

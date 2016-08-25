@@ -1,11 +1,12 @@
 <ion-nav-bar class="bar bar-header bar-transparent nav-title-slide-ios7">
+  <button class="button button-icon icon ion-chevron-left back-button-white" ui-sref="tabs.models"></button>
   <ion-nav-title>{{model.data.title}}</ion-nav-title>
-  <ion-nav-back-button></ion-nav-back-button>
 </ion-nav-bar>
 <ion-nav-view animation="slide-left-right">
   <ion-view>
     <ion-content class="layout-detail">
-      <header class="hero-image" ng-class="{'has-gradient': !model.modelImage}" style="background-image: url(data:image/jpeg;base64,{{model.modelImage}})">
+      <!-- HAS MODEL IMAGE  -->
+      <header class="hero-image has-scrim" ng-if="model.modelImage" style="background-image: url(data:image/jpeg;base64,{{model.modelImage}})">
         <div class="icon-nav-bar">
           <div class="icon-nav">
             <div class="icon-nav-col">
@@ -18,36 +19,49 @@
               <button class="button button-dark icon ion-settings"></button>
             </div>
             <div class="icon-nav-col">
-              <button class="button button-dark icon ion-settings"></button>
+              <button class="button button-dark icon ion-share"></button>
             </div>
           </div>
         </div>
       </header>
+      <!-- NO MODEL IMAGE -->
+      <header class="hero-image has-gradient" ng-if="!model.modelImage">
+        <div class="icon-nav-bar">
+          <button class="button button-clear-center button-with-icon" ng-click="model.upload()">
+            <div class="icon-button-icon" ng-include="'img/camera-button-icon.svg'"></div>
+            <span class="icon-button-label">Add Picture</span>
+          </button>
+        </div>
+      </header>
       <div class="list">
-        <div class="item item-divider">
+        <div class="item item-icon-left">
+          <i class="icon ion-person"></i>
           <small>Builder</small>
           <p>{{model.data.builder}}</p>
         </div>
-        <div class="item item-divider">
+        <div class="item item-icon-left">
+          <i class="icon ion-clock"></i>
           <small>Date Started</small>
           <p>{{model.data.dateStarted | date}}</p>
         </div>
-        <div class="item item-divider">
+        <div class="item item-icon-left item-button-right">
+          <i class="icon ion-ribbon-b"></i>
           <small>Class</small>
           <p>{{model.data.classType}}</p>
+          <button class="button button-clear button-energized">Edit</button>
         </div>
-        <div class="item item-divider">
+        <div class="item item-icon-left item-button-right">
+          <i class="icon ion-pricetag"></i>
           <small>Manufacturer</small>
           <p>{{model.data.manufacturer}}</p>
+          <button class="button button-clear button-energized">Edit</button>
         </div>
-        <div class="item item-divider" ng-if="model.data.description">
+        <div class="item item-icon-left" ng-if="model.data.description">
+          <i class="icon ion-android-list"></i>
           <small>Description</small>
           <p>{{model.data.description}}</p>
         </div>
       </div>
-      <a href="" ui-sref="tabs.models">Home</a>
-      <button class="button button-block button-positive" ng-click="model.upload()">Take Picture</button>
-      <button class="button button-block button-positive" ng-click="model.uploadFromPhotos()">Upload Model Image</button>
     </ion-content>
   </ion-view>
 </ion-nav-view>
