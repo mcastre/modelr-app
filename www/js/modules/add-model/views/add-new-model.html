@@ -26,8 +26,8 @@
         <div class="wizard-page">
           <h2 class="wizard-step-title">Upload Picture</h2>
           <p class="wizard-content"><small>Take a good picture of your model as it will be used as a cover photo. You can always change this later.</small></p>
-          <div class="profile-avatar-large" ng-if="newModel.modelImage">
-            <img ng-src="data:image/jpeg;base64,{{newModel.modelImage}}" width="100%" />
+          <div class="profile-avatar-large" ng-if="newModel.build.modelImage">
+            <img ng-src="data:image/jpeg;base64,{{newModel.build.modelImage}}" width="100%" />
           </div>
           <button class="button button-block button-outline button-light" ng-click="newModel.upload()">Take Picture</button>
           <button class="button button-block button-outline button-light" ng-click="newModel.uploadFromPhotos()">Upload From Photos</button>

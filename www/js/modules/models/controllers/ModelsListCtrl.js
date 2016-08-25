@@ -1,6 +1,8 @@
 angular.module('modelrApp')
-.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', function ModelsListCtrl ($state, AuthSvc, $ionicLoading) {
+.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray) {
   var models = this;
+  var modelsRef = firebase.database().ref().child('modelsCollection');
+  models.allModels = $firebaseArray(modelsRef);
 
   models.loadingProperties = {
     template: 'Logging In...',
@@ -11,6 +13,7 @@ angular.module('modelrApp')
   };
 
   $ionicLoading.show(models.loadingProperties); // Loading
+
 
   models.list = [
     {

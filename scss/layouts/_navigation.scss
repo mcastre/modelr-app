@@ -1,0 +1,21 @@
+.icon-nav-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  padding: 0 40px;
+}
+
+$icon-button-size: 52px;
+.icon-nav {
+  display: flex;
+  justify-content: space-between;
+  .icon-nav-col {
+    width: calc(100% / $icon-button-size);
+    .button {
+      border-radius: 100rem;
+      min-width: $icon-button-size;
+      min-height: $icon-button-size;
+    }
+  }
+}

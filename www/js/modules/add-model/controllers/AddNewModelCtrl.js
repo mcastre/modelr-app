@@ -1,7 +1,7 @@
 angular.module('modelrApp')
-.controller('AddNewModelCtrl', ['AuthSvc', '$firebaseArray', '$cordovaCamera', function AddNewModelCtrl(AuthSvc, $firebaseArray, $cordovaCamera) {
+.controller('AddNewModelCtrl', ['AuthSvc', '$firebaseArray', '$cordovaCamera', 'AddModelSvc',  function AddNewModelCtrl(AuthSvc, $firebaseArray, $cordovaCamera, AddModelSvc) {
   var newModel = this;
-  var modelsRef = firebase.database().ref().child('models');
+  var modelsRef = firebase.database().ref().child('modelsCollection');
   var models = $firebaseArray(modelsRef);
 
   var user = AuthSvc.$getAuth();
@@ -14,7 +14,6 @@ angular.module('modelrApp')
   } else {
     $state.go('login');
   }
-
 
   newModel.build = {
     title: ''
@@ -42,7 +41,8 @@ angular.module('modelrApp')
 
 
   function writeModelImage(image) {
-    userRef.update({ modelImage: image });
+    newModel.build.modelImage = image;
+    //modelsRef.update({ modelImage: image });
   }
 
   newModel.upload = function() {
@@ -59,7 +59,8 @@ angular.module('modelrApp')
       saveToPhotoAlbum: false
     };
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      writeModelImage(imageData);
+      newModel.build.modelImage = imageData;
+      //writeModelImage(imageData);
     }, function(error) {
       console.log(error);
     });
@@ -78,7 +79,8 @@ angular.module('modelrApp')
       saveToPhotoAlbum: false
     };
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      writeModelImage(imageData);
+      newModel.build.modelImage = imageData;
+      //writeModelImage(imageData);
     }, function(error) {
       console.log(error);
     });
@@ -92,7 +94,7 @@ angular.module('modelrApp')
   };
 
   newModel.addModel = function () {
-    models.$add(angular.copy(newModel.build));
+    AddModelSvc.addModel(angular.copy(newModel.build), user.uid);
     newModel.newModelForm = {};
   };
 

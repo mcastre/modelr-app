@@ -1,5 +1,53 @@
-<ion-view view-title="Model View">
-  <ion-content class="padding">
-    <p>Content</p>
-  </ion-content>
-</ion-view>
+<ion-nav-bar class="bar bar-header bar-transparent nav-title-slide-ios7">
+  <ion-nav-title>{{model.data.title}}</ion-nav-title>
+  <ion-nav-back-button></ion-nav-back-button>
+</ion-nav-bar>
+<ion-nav-view animation="slide-left-right">
+  <ion-view>
+    <ion-content class="layout-detail">
+      <header class="hero-image" ng-class="{'has-gradient': !model.modelImage}" style="background-image: url(data:image/jpeg;base64,{{model.modelImage}})">
+        <div class="icon-nav-bar">
+          <div class="icon-nav">
+            <div class="icon-nav-col">
+              <button class="button button-dark icon ion-gear-a"></button>
+            </div>
+            <div class="icon-nav-col">
+              <button class="button button-dark icon ion-settings"></button>
+            </div>
+            <div class="icon-nav-col">
+              <button class="button button-dark icon ion-settings"></button>
+            </div>
+            <div class="icon-nav-col">
+              <button class="button button-dark icon ion-settings"></button>
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="list">
+        <div class="item item-divider">
+          <small>Builder</small>
+          <p>{{model.data.builder}}</p>
+        </div>
+        <div class="item item-divider">
+          <small>Date Started</small>
+          <p>{{model.data.dateStarted | date}}</p>
+        </div>
+        <div class="item item-divider">
+          <small>Class</small>
+          <p>{{model.data.classType}}</p>
+        </div>
+        <div class="item item-divider">
+          <small>Manufacturer</small>
+          <p>{{model.data.manufacturer}}</p>
+        </div>
+        <div class="item item-divider" ng-if="model.data.description">
+          <small>Description</small>
+          <p>{{model.data.description}}</p>
+        </div>
+      </div>
+      <a href="" ui-sref="tabs.models">Home</a>
+      <button class="button button-block button-positive" ng-click="model.upload()">Take Picture</button>
+      <button class="button button-block button-positive" ng-click="model.uploadFromPhotos()">Upload Model Image</button>
+    </ion-content>
+  </ion-view>
+</ion-nav-view>

@@ -46,7 +46,7 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard'])
   .state('tabs.models', {
     url: '/models',
     views: {
-      'models-tab': {
+      'menuContent': {
         templateUrl: modulesPath + 'models/views/models-home.html',
         controller: 'ModelsListCtrl',
         controllerAs: 'models'
@@ -56,7 +56,7 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard'])
   .state('tabs.inventory', {
     url: '/inventory',
     views: {
-      'inventory-tab': {
+      'menuContent': {
         templateUrl: modulesPath + 'inventory/views/inventory-home.html',
         controller: 'InventoryCtrl',
         controllerAs: 'inventory',
@@ -66,7 +66,7 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard'])
   .state('tabs.resources', {
     url: '/resources',
     views: {
-      'resources-tab': {
+      'menuContent': {
         templateUrl: modulesPath + 'resources/views/resources-home.html',
         controller: 'ResourcesCtrl',
         controllerAs: 'resources',

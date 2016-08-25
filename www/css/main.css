@@ -19,7 +19,7 @@
   background: linear-gradient(to bottom, #516395 0%, #614385 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#516395', endColorstr='#614385',GradientType=0 ); }
 
-.wizard-second {
+.layout-detail .hero-image.has-gradient, .wizard-second {
   background: #f45c43;
   background: -moz-linear-gradient(top, #f45c43 0%, #eb3349 100%);
   background: -webkit-linear-gradient(top, #f45c43 0%, #eb3349 100%);
@@ -84,6 +84,9 @@ a {
 
 .item-input {
   padding: 6px 10px; }
+
+.item h2 {
+  font-size: 22px; }
 
 .login-logomark {
   margin: 1rem; }
@@ -200,6 +203,26 @@ a {
   border: 0;
   color: white; }
 
+.hero-image {
+  position: relative; }
+
+.icon-nav-bar {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  padding: 0 40px; }
+
+.icon-nav {
+  display: flex;
+  justify-content: space-between; }
+  .icon-nav .icon-nav-col {
+    width: calc(100% / $icon-button-size); }
+    .icon-nav .icon-nav-col .button {
+      border-radius: 100rem;
+      min-width: 52px;
+      min-height: 52px; }
+
 .scroll-content {
   background-color: #e8e8e8; }
 
@@ -226,6 +249,20 @@ a {
     color: white;
     text-align: center;
     padding: 0 20px; }
+
+.layout-detail .hero-image {
+  width: 100%;
+  height: 300px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
+
+.card-image-full {
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; }
 
 .wizard-first .scroll-content {
   background: none; }

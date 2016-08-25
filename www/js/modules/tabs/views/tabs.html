@@ -14,19 +14,27 @@
          </button>
       </ion-nav-buttons>
     </ion-nav-bar>
+    <ion-view>
+      <ion-nav-view name="menuContent"></ion-nav-view>
 
-    <!-- TABS START -->
-    <ion-tabs class="tabs-icon-top tabs-positive">
-      <ion-tab title="My Models" icon="ion-home" href="#/tabs/models">
-        <ion-nav-view name="models-tab"></ion-nav-view>
-      </ion-tab>
-      <ion-tab title="Inventory" icon="ion-ios-plus" href="#/tabs/inventory">
-        <ion-nav-view name="inventory-tab"></ion-nav-view>
-      </ion-tab>
-      <ion-tab title="Resources" icon="ion-ios-world" href="#/tabs/resources">
-        <ion-nav-view name="resources-tab"></ion-nav-view>
-      </ion-tab>
-    </ion-tabs>
+      <!-- TABS -->
+      <div class="tabs-positive tabs-icon-top tabs-bottom tabs-standard">
+        <div class="tab-nav tabs">
+          <a class="tab-item" ng-click="tabs.goTabModels()" ng-class="{ active : tabs.isCurrentTab(0) }">
+            <i class="icon ion-home"></i>
+            My Models
+          </a>
+          <a class="tab-item" ng-click="tabs.goTabInventory()" ng-class="{ active : tabs.isCurrentTab(1) }">
+            <i class="icon ion-ios-plus"></i>
+            My Inventory
+          </a>
+          <a class="tab-item" ng-click="tabs.goTabResources()" ng-class="{ active : tabs.isCurrentTab(2) }">
+            <i class="icon ion-ios-world"></i>
+            Resources
+          </a>
+        </div>
+      </div>
+    </ion-view>
 
   </ion-side-menu-content>
 

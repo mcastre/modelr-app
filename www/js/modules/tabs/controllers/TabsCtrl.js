@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('TabsCtrl', ['AuthSvc', '$state', '$firebaseArray', '$ionicLoading', function TabsCtrl(AuthSvc, $state, $firebaseArray, $ionicLoading) {
+.controller('TabsCtrl', ['AuthSvc', '$state', '$firebaseArray', '$ionicLoading', '$ionicConfig', '$ionicTabsDelegate', function TabsCtrl(AuthSvc, $state, $firebaseArray, $ionicLoading, $ionicConfig, $ionicTabsDelegate) {
 
   var tabs = this;
 
@@ -12,6 +12,35 @@ angular.module('modelrApp')
   };
 
   $ionicLoading.show(tabs.loadingProperties);
+
+  tabs.currentTab = {
+    index: 0
+  };
+
+  tabs.onClickTab = function (tabIndex) {
+    tabs.currentTab.index = tabIndex;
+  };
+  tabs.isCurrentTab = function(tabIndex) {
+    return tabs.currentTab.index === tabIndex;
+  };
+
+  tabs.goTabModels = function () {
+    tabs.onClickTab(0);
+    $ionicConfig.views.transition('platform');
+    $state.go('tabs.models');
+  };
+
+  tabs.goTabInventory = function () {
+    tabs.onClickTab(1);
+    $ionicConfig.views.transition('platform');
+    $state.go('tabs.inventory');
+  };
+
+  tabs.goTabResources = function () {
+    tabs.onClickTab(2);
+    $ionicConfig.views.transition('platform');
+    $state.go('tabs.resources');
+  };
 
   AuthSvc.$onAuthStateChanged(function(authData) {
     if (authData) {
