@@ -1,11 +1,20 @@
 <ion-view title="Paints">
   <ion-content class="padding has-header has-tabs">
     <button class="button button-block button-positive" ng-click="paints.openAddPaintModal()">Add Paint</button>
+    <form>
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search" ng-model="search.query">
+          <span class="input-metadata-right" ng-if="search.query">{{(paints.tamiyaPaints | filter: search.query).length}} Results</span>
+        </label>
+      </div>
+    </form>
     <div class="list swatches-list" ng-if="paints.tamiyaPaints.length">
       <div class="item item-divider">
         Tamiya Paints
       </div>
-      <div class="item item-avatar item-toggle" ng-repeat="paint in paints.tamiyaPaints">
+      <div class="item item-avatar item-toggle" ng-repeat="paint in paints.tamiyaPaints | filter: search.query">
         <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
         <p><b>{{paint.title}}</b></p>
         <small>{{paint.type}} - {{paint.hexKey}}</small>

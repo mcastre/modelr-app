@@ -119,6 +119,11 @@ angular.module('modelrApp')
 
   paints.tamiyaPaints = PaintsSvc.getPaints();
 
+  // SEARCH PAINTS
+  paints.search = {
+    query: ''
+  };
+
   // ADD PAINT
   $ionicModal.fromTemplateUrl('js/modules/inventory/templates/add-paint-modal-template.html', function($ionicModal) {
     paints.modal = $ionicModal;
