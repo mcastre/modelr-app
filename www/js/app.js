@@ -43,30 +43,53 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard'])
     controllerAs: 'tabs'
   })
   // Tab Views
-  .state('tabs.models', {
+  .state('models', {
     url: '/models',
+    parent: 'tabs',
     views: {
-      'menuContent': {
+      'mainTabs': {
         templateUrl: modulesPath + 'models/views/models-home.html',
         controller: 'ModelsListCtrl',
         controllerAs: 'models'
       }
     }
   })
-  .state('tabs.inventory', {
+  .state('inventory', {
     url: '/inventory',
+    parent: 'tabs',
     views: {
-      'menuContent': {
+      'mainTabs': {
         templateUrl: modulesPath + 'inventory/views/inventory-home.html',
         controller: 'InventoryCtrl',
         controllerAs: 'inventory',
       }
     }
   })
-  .state('tabs.resources', {
-    url: '/resources',
+  .state('inventory.paints', {
+    url: '/paints',
     views: {
-      'menuContent': {
+      'mainTabs@tabs': {
+        controller: 'InventoryPaintsCtrl',
+        controllerAs: 'paints',
+        templateUrl: modulesPath + 'inventory/views/inventory-paints.html'
+      }
+    }
+  })
+  .state('inventory.supplies', {
+    url: '/supplies',
+    views: {
+      'mainTabs@tabs': {
+        templateUrl: modulesPath + 'inventory/views/inventory-supplies.html',
+        controller: 'InventorySuppliesCtrl',
+        controllerAs: 'supplies',
+      }
+    }
+  })
+  .state('resources', {
+    url: '/resources',
+    parent: 'tabs',
+    views: {
+      'mainTabs': {
         templateUrl: modulesPath + 'resources/views/resources-home.html',
         controller: 'ResourcesCtrl',
         controllerAs: 'resources',

@@ -31,19 +31,19 @@ angular.module('modelrApp')
   tabs.goTabModels = function () {
     tabs.onClickTab(0);
     $ionicConfig.views.transition('platform');
-    $state.go('tabs.models');
+    $state.go('models');
   };
 
   tabs.goTabInventory = function () {
     tabs.onClickTab(1);
     $ionicConfig.views.transition('platform');
-    $state.go('tabs.inventory');
+    $state.go('inventory');
   };
 
   tabs.goTabResources = function () {
     tabs.onClickTab(2);
     $ionicConfig.views.transition('platform');
-    $state.go('tabs.resources');
+    $state.go('resources');
   };
 
   AuthSvc.$onAuthStateChanged(function(authData) {

@@ -1,0 +1,26 @@
+<ion-view title="Paints">
+  <ion-content class="padding has-header has-tabs">
+    <button class="button button-block button-positive" ng-click="paints.openAddPaintModal()">Add Paint</button>
+    <div class="list swatches-list" ng-if="paints.tamiyaPaints.length">
+      <div class="item item-divider">
+        Tamiya Paints
+      </div>
+      <div class="item item-avatar item-toggle" ng-repeat="paint in paints.tamiyaPaints">
+        <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
+        <p><b>{{paint.title}}</b></p>
+        <small>{{paint.type}} - {{paint.hexKey}}</small>
+        <label class="toggle toggle-dark">
+          <input type="checkbox" ng-model="paint.inStock">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <!-- NO PAINTS IN COLLECTION -->
+    <section class="view-basic" ng-if="!paints.tamiyaPaints.length">
+      <h2 class="view-subheader">No paints added...</h2>
+      <p class="view-content">Click on the Add Paint button to add paints to the list.</p>
+    </section>
+  </ion-content>
+</ion-view>

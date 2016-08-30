@@ -1,4 +1,4 @@
-.modal.login-modal, .has-gradient-background, .welcome-background-two {
+.modal.login-modal, .modal.app-modal, .has-gradient-background, .welcome-background-two {
   background: #185a9d;
   background: -moz-linear-gradient(45deg, #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
   background: -webkit-linear-gradient(45deg, #185a9d 0%, #1e8ba4 19%, #22a9a9 33%, #23b4aa 40%, #2bf3b4 92%);
@@ -105,6 +105,9 @@ a {
 .item h2 {
   font-size: 22px; }
 
+.swatches-list .item p {
+  margin-bottom: 0; }
+
 .login-logomark {
   margin: 1rem; }
   .login-logomark svg {
@@ -133,11 +136,19 @@ a {
   width: 180px;
   border-radius: 100rem; }
 
+.circle-swatch {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 100rem;
+  border: 1px solid rgba(0, 0, 0, 0.2); }
+
 .login-form-wrapper {
   margin-top: 1rem; }
-  .login-form-wrapper .item-floating-label {
-    background-color: rgba(0, 0, 0, 0.1); }
   .login-form-wrapper .item {
+    background-color: rgba(0, 0, 0, 0.1);
     border: 0; }
   .login-form-wrapper .item-input input {
     color: white; }
@@ -201,7 +212,6 @@ a {
   .login-modal-header:after {
     clear: both; }
   .login-modal-header .subtitle {
-    color: white;
     font-size: 16px; }
   .login-modal-header .button-clear.button-clear {
     float: right;
@@ -213,7 +223,8 @@ a {
 
 .login-modal-subtitle {
   float: left;
-  width: 75%; }
+  width: 75%;
+  color: #666; }
 
 .bar-transparent {
   background-color: rgba(255, 255, 255, 0);
@@ -272,7 +283,7 @@ a {
 
 .layout-detail .hero-image {
   width: 100%;
-  height: 400px;
+  height: 300px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -72,7 +72,7 @@ angular.module('modelrApp')
       if (login.newUserSetUp) {
         return;
       } else {
-        $state.go('tabs.models');
+        $state.go('models');
       }
     } else {
       console.log('Logged out');

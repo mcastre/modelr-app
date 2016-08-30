@@ -1,0 +1,45 @@
+<div class="modal app-modal">
+  <header class="login-modal-header">
+    <div class="login-modal-subtitle">
+      <h3>Add Paint</h3>
+      <p class="subtitle">Enter the paint information.</p>
+    </div>
+    <div class="close-modal-button button button-clear" ng-click="paints.closeAddPaintModal()"><span class="icon ion-close"></span></div>
+  </header>
+  <section class="login-form-wrapper">
+    <form name="newPaintForm">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="paints.title">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Type</span>
+          <input type="text" ng-model="paints.type">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Hex Key</span>
+          <input type="text" ng-model="paints.hexKey">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Swatch Color (hex)</span>
+          <input type="text" ng-model="paints.swatch">
+        </label>
+        <div class="item item-toggle">
+          In Stock?
+          <label class="toggle toggle-dark">
+            <input type="checkbox" ng-model="paints.inStock">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="paints.addPaint()">Add Paint</button>
+        <button class="button button-block button-stable" ng-click="paints.closeAddPaintModal()">Cancel</button>
+        <button class="button button-clear button-light" ng-click="paints.addPaint()">Clear</button>
+      </div>
+    </form>
+  </content>
+</div>

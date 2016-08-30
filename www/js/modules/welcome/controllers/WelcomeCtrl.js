@@ -90,7 +90,7 @@ angular.module('modelrApp')
   };
 
   welcome.goToHome = function () {
-    $state.go('tabs.models');
+    $state.go('models');
   };
 
 }]);

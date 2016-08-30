@@ -14,7 +14,6 @@
   margin-top: 2rem;
   @include clearfix;
   .subtitle {
-    color: white;
     font-size: $app-base-font-size;
   }
   .button-clear.button-clear {
@@ -29,6 +28,7 @@
 .login-modal-subtitle {
   float: left;
   width: 75%;
+  color: $app-medium-gray;
 }
 .bar-transparent {
   background-color: rgba(white, 0);

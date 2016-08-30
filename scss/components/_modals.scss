@@ -1,10 +1,7 @@
 .login-form-wrapper {
   margin-top: 1rem;
-  .item-floating-label {
-    background-color: rgba(black, 0.1);
-
-  }
   .item {
+    background-color: rgba(black, 0.1);
     border: 0;
   }
   .item-input input {
@@ -18,5 +15,8 @@
   margin-top: 2rem;
 }
 .modal.login-modal {
+  @extend %teal-daylight-background;
+}
+.modal.app-modal {
   @extend %teal-daylight-background;
 }
