@@ -11,3 +11,9 @@
 .swatches-list .item p {
   margin-bottom: 0;
 }
+
+.card-actions-right {
+  float: right;
+  margin-top: -12px;
+  @extend %list-inline;
+}

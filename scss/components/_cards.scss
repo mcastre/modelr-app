@@ -8,6 +8,24 @@
   }
   .card-list-value {
     margin: 0;
+    color: $app-medium-gray;
     font-size: $app-base-font-size;
   }
+}
+.card-status {
+  float: left;
+  font-size: ($app-base-font-size - 2px);
+  color: rgba($app-medium-gray, 0.7);
+  font-style: italic;
+}
+.card-item-count {
+  margin-left: 5px;
+  font-size: ($app-base-font-size - 2px);
+  color: rgba($app-medium-gray, 0.7);
+}
+.card-link-item {
+  color: $app-medium-gray;
+}
+.item-icon-right .icon {
+  font-size: $app-base-font-size;
 }

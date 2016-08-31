@@ -39,6 +39,11 @@
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.3) 30%, transparent 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#03000000',GradientType=0 ); }
 
+.card-actions-right {
+  list-style: none; }
+  .card-actions-right li {
+    display: inline-block; }
+
 .welcome-title {
   font-size: 32px;
   color: white;
@@ -67,7 +72,7 @@ a {
 
 .button-email {
   background-color: #eee;
-  color: #666; }
+  color: #444; }
 
 .link-basic {
   color: white;
@@ -108,6 +113,10 @@ a {
 .swatches-list .item p {
   margin-bottom: 0; }
 
+.card-actions-right {
+  float: right;
+  margin-top: -12px; }
+
 .login-logomark {
   margin: 1rem; }
   .login-logomark svg {
@@ -144,6 +153,16 @@ a {
   height: 40px;
   border-radius: 100rem;
   border: 1px solid rgba(0, 0, 0, 0.2); }
+
+.status-circle {
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  margin-top: 3px;
+  background-color: #2BF3B4;
+  -webkit-border-radius: 100rem;
+  border-radius: 100rem; }
 
 .login-form-wrapper {
   margin-top: 1rem; }
@@ -195,11 +214,29 @@ a {
   margin-bottom: 10px; }
 
 .list-in-card .card-list-label {
-  color: rgba(102, 102, 102, 0.7);
+  color: rgba(68, 68, 68, 0.7);
   padding-bottom: 3px; }
 
 .list-in-card .card-list-value {
   margin: 0;
+  color: #444;
+  font-size: 16px; }
+
+.card-status {
+  float: left;
+  font-size: 14px;
+  color: rgba(68, 68, 68, 0.7);
+  font-style: italic; }
+
+.card-item-count {
+  margin-left: 5px;
+  font-size: 14px;
+  color: rgba(68, 68, 68, 0.7); }
+
+.card-link-item {
+  color: #444; }
+
+.item-icon-right .icon {
   font-size: 16px; }
 
 .login-header {
@@ -235,7 +272,7 @@ a {
 .login-modal-subtitle {
   float: left;
   width: 75%;
-  color: #666; }
+  color: #444; }
 
 .bar-transparent {
   background-color: rgba(255, 255, 255, 0);

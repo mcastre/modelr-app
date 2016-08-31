@@ -45,6 +45,15 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#33000000', endColorstr='#03000000',GradientType=0 );
 }
 
+// Utils
+// --------------------------------------------------
+%list-inline {
+  list-style: none;
+  li {
+    display: inline-block;
+  }
+}
+
 // Clearfix
 // --------------------------------------------------
 

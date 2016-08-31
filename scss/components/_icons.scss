@@ -44,3 +44,13 @@
   border-radius: 100rem;
   border: 1px solid rgba(black, 0.2);
 }
+.status-circle {
+  float: left;
+  width: $app-base-font-size;
+  height: $app-base-font-size;
+  margin-right: 5px;
+  margin-top: 3px;
+  background-color: $app-primary;
+  -webkit-border-radius: 100rem;
+  border-radius: 100rem;
+}

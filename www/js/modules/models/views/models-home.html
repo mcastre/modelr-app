@@ -9,7 +9,6 @@
     </section>
     <div class="list card" ng-repeat="(modelID, model) in models.allModels">
       <div class="item">
-        <!-- <img src="mcfly.jpg"> -->
         <h2><a href="" ui-sref="model({id: modelID})">{{model.title}}</a></h2>
         <p>{{model.builder}} - {{model.dateStarted | date}}</p>
       </div>
@@ -33,10 +32,29 @@
             <p class="card-list-value">{{model.description}}</p>
           </li>
         </ul>
-        <!-- <p>{{model.scale}}</p>
-        <p>{{model.manufacturer}}</p>
-        <p>{{model.classType}}</p>
-        <p>{{model.description}}</p> -->
+      </div>
+      <a class="item item-icon-right card-link-item" ui-sref="inventory.paints">
+        Paints <span class="card-item-count">5</span>
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <a class="item item-icon-right card-link-item" ui-sref="inventory.supplies">
+        Supplies
+        <i class="icon ion-chevron-right"></i>
+      </a>
+      <div class="item item-text-wrap">
+        <span class="card-status"><span class="status-circle"></span>{{model.status}}</span>
+        <ul class="card-actions-right">
+          <li>
+            <button class="button button-clear button-dark">
+              <i class="icon ion-forward"></i>
+            </button>
+          </li>
+          <li>
+            <button class="button button-clear button-dark">
+              <i class="icon ion-chatbox"></i>
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   </ion-content>
