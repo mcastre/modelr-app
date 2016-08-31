@@ -191,6 +191,17 @@ a {
     text-align: left;
     background-color: rgba(255, 255, 255, 0); }
 
+.list-in-card .card-list-item {
+  margin-bottom: 10px; }
+
+.list-in-card .card-list-label {
+  color: rgba(102, 102, 102, 0.7);
+  padding-bottom: 3px; }
+
+.list-in-card .card-list-value {
+  margin: 0;
+  font-size: 16px; }
+
 .login-header {
   margin-top: 4rem;
   margin-bottom: 2rem; }

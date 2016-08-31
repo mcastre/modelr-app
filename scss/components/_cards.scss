@@ -1,0 +1,13 @@
+.list-in-card {
+  .card-list-item {
+    margin-bottom: $default-spacing;
+  }
+  .card-list-label {
+    color: rgba($app-medium-gray, 0.7);
+    padding-bottom: 3px;
+  }
+  .card-list-value {
+    margin: 0;
+    font-size: $app-base-font-size;
+  }
+}

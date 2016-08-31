@@ -15,9 +15,28 @@
       </div>
       <div class="card-image-full" style="background-image: url(data:image/jpeg;base64,{{model.modelImage}})"  ng-if="model.modelImage"></div>
       <div class="item item-body">
+        <ul class="list-in-card">
+          <li class="card-list-item">
+            <small class="card-list-label">Scale</small>
+            <p class="card-list-value">{{model.scale}}</p>
+          </li>
+          <li class="card-list-item">
+            <small class="card-list-label">Manufacturer</small>
+            <p class="card-list-value">{{model.manufacturer}}</p>
+          </li>
+          <li class="card-list-item">
+            <small class="card-list-label">Class</small>
+            <p class="card-list-value">{{model.classType}}</p>
+          </li>
+          <li class="card-list-item" ng-if="model.description">
+            <small class="card-list-label">Description</small>
+            <p class="card-list-value">{{model.description}}</p>
+          </li>
+        </ul>
+        <!-- <p>{{model.scale}}</p>
         <p>{{model.manufacturer}}</p>
         <p>{{model.classType}}</p>
-        <p>{{model.description}}</p>
+        <p>{{model.description}}</p> -->
       </div>
     </div>
   </ion-content>
