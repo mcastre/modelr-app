@@ -412,6 +412,7 @@ a.card-link-item {
 .layout-detail .hero-image {
   width: 100%;
   height: 250px;
+  overflow-y: hidden;
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
