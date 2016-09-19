@@ -23,9 +23,59 @@
   font-size: ($app-base-font-size - 2px);
   color: rgba($app-medium-gray, 0.7);
 }
-.card-link-item {
+a.card-link-item {
   color: $app-medium-gray;
 }
 .item-icon-right .icon {
   font-size: $app-base-font-size;
+}
+.card-title-wrapper {
+  .card-title a {
+    font-size: 24px;
+  }
+}
+.model-card {
+  padding-top: 0;
+  .item.item-body {
+    border: 0;
+  }
+}
+.card-detail-header {
+  position: absolute;
+  top: $default-spacing;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  .close-icon {
+    float: right;
+    padding: $app-base-font-size;
+    .icon {
+      color: white;
+      font-size: $app-base-font-size;
+    }
+  }
+}
+
+.card-detail-view {
+  position: relative;
+  z-index: 1;
+}
+
+.card-secondary-nav {
+  display: flex;
+  justify-content: space-between;
+  li {
+    width: calc(100% / 3);
+    text-align: center;
+    padding: 0 $default-spacing;
+    .card-nav-icon {
+      display: block;
+      font-size: $app-header-font-size;
+    }
+    .card-nav-label {
+      padding-top: 7px;
+      display: block;
+      font-size: $app-base-font-size;
+    }
+  }
 }

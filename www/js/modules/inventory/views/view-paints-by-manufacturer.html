@@ -1,0 +1,34 @@
+<ion-view>
+  <ion-nav-title>{{viewPaints.data.name}}</ion-nav-title>
+  <ion-content class="padding has-header has-tabs">
+    <button class="button button-block button-positive" ng-click="viewPaints.openAddPaintModal()">Add Paint</button>
+    <form class="list-search-box">
+      <div class="list list-inset">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="text" placeholder="Search {{viewPaints.data.name}}" ng-model="search.query">
+          <span class="input-metadata-right" ng-if="search.query">{{(viewPaints.data.paints | filter: search.query).length}} Results</span>
+        </label>
+      </div>
+    </form>
+    <div class="list swatches-list" ng-if="viewPaints.data.paints.length">
+      <div class="item item-avatar item-toggle" ng-repeat="paint in viewPaints.data.paints | filter: search.query">
+        <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
+        <p><b>{{paint.title}}</b></p>
+        <small>{{paint.type}} - {{paint.hexKey}}</small>
+        <label class="toggle toggle-dark">
+          <input type="checkbox" ng-model="paint.inStock">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <p><small>Total: {{viewPaints.data.paints.length}}</small></p>
+    <!-- NO PAINTS IN COLLECTION -->
+    <section class="view-basic" ng-if="!viewPaints.data.paints.length">
+      <h2 class="view-subheader">No paints added...</h2>
+      <p class="view-content">Click on the Add Paint button to add paints to the list.</p>
+    </section>
+  </ion-content>
+</ion-view>

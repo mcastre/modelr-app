@@ -100,6 +100,14 @@ a {
   z-index: 99;
   color: white; }
 
+.hero-bottom-actions .change-image-button {
+  float: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: rgba(68, 68, 68, 0.7); }
+  .hero-bottom-actions .change-image-button .icon {
+    margin-left: 3px; }
+
 .card .list > .item {
   padding: 14px 0;
   font-size: 14px; }
@@ -116,6 +124,22 @@ a {
 .card-actions-right {
   float: right;
   margin-top: -12px; }
+
+.list-header-bar {
+  display: block;
+  background-color: #28c795;
+  padding: 15px; }
+  .list-header-bar .list-header-title {
+    font-size: 18px;
+    color: white;
+    margin: 0; }
+  .list-header-bar .list-header-subtitle {
+    font-size: 12px;
+    color: white;
+    margin: 0; }
+
+.model-detail-list > .item.item-button-right > .button.button-clear {
+  font-size: 14px; }
 
 .login-logomark {
   margin: 1rem; }
@@ -152,7 +176,7 @@ a {
   width: 40px;
   height: 40px;
   border-radius: 100rem;
-  border: 1px solid rgba(0, 0, 0, 0.2); }
+  border: 1px solid rgba(0, 0, 0, 0.1); }
 
 .status-circle {
   float: left;
@@ -163,6 +187,19 @@ a {
   background-color: #2BF3B4;
   -webkit-border-radius: 100rem;
   border-radius: 100rem; }
+  .status-circle.as-list-item {
+    position: absolute;
+    top: 28px;
+    left: 14px;
+    width: 24px;
+    height: 24px;
+    margin: 0; }
+  .status-circle.status-awaiting-build {
+    background-color: #eee; }
+  .status-circle.status-in-progress {
+    background-color: #195490; }
+  .status-circle.status-completed {
+    background-color: #2BF3B4; }
 
 .login-form-wrapper {
   margin-top: 1rem; }
@@ -210,6 +247,9 @@ a {
     text-align: left;
     background-color: rgba(255, 255, 255, 0); }
 
+.list-search-box {
+  margin-bottom: 1rem; }
+
 .list-in-card .card-list-item {
   margin-bottom: 10px; }
 
@@ -233,11 +273,51 @@ a {
   font-size: 14px;
   color: rgba(68, 68, 68, 0.7); }
 
-.card-link-item {
+a.card-link-item {
   color: #444; }
 
 .item-icon-right .icon {
   font-size: 16px; }
+
+.card-title-wrapper .card-title a {
+  font-size: 24px; }
+
+.model-card {
+  padding-top: 0; }
+  .model-card .item.item-body {
+    border: 0; }
+
+.card-detail-header {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  z-index: 1; }
+  .card-detail-header .close-icon {
+    float: right;
+    padding: 16px; }
+    .card-detail-header .close-icon .icon {
+      color: white;
+      font-size: 16px; }
+
+.card-detail-view {
+  position: relative;
+  z-index: 1; }
+
+.card-secondary-nav {
+  display: flex;
+  justify-content: space-between; }
+  .card-secondary-nav li {
+    width: calc(100% / 3);
+    text-align: center;
+    padding: 0 10px; }
+    .card-secondary-nav li .card-nav-icon {
+      display: block;
+      font-size: 22px; }
+    .card-secondary-nav li .card-nav-label {
+      padding-top: 7px;
+      display: block;
+      font-size: 16px; }
 
 .login-header {
   margin-top: 4rem;
@@ -331,8 +411,8 @@ a {
 
 .layout-detail .hero-image {
   width: 100%;
-  height: 300px;
-  background-position: center;
+  height: 250px;
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative; }
@@ -358,6 +438,13 @@ a {
     font-size: 18px; }
   .view-basic .view-content {
     font-size: 14px; }
+
+.hero-bottom-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2; }
 
 .wizard-first .scroll-content {
   background: none; }

@@ -1,0 +1,12 @@
+<div class="item" ng-if="model.isEditModeStatus">
+  <i class="icon ion-ribbon-b"></i>
+  <small>Project Status</small>
+  <form>
+    <ion-list>
+      <ion-radio ng-model="model.data.status" ng-value="'Awaiting Build'">Awaiting Build</ion-radio>
+      <ion-radio ng-model="model.data.status" ng-value="'In Progress'">In Progress</ion-radio>
+      <ion-radio ng-model="model.data.status" ng-value="'Completed'">Completed</ion-radio>
+    </ion-list>
+  </form>
+  <button class="button button-clear button-positive" ng-click="model.updateStatus(model.data.status)">Update</button>
+</div>

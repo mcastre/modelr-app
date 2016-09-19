@@ -49,3 +49,17 @@ a {
   z-index: 99;
   color: white;
 }
+
+// Change Picture button for Model Detail View
+
+$small-button-font-size: 12px;
+$small-button-height: 30px;
+.hero-bottom-actions .change-image-button {
+  float: right;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  background-color: rgba($app-medium-gray, 0.7);
+  .icon {
+    margin-left: 3px;
+  }
+}

@@ -75,6 +75,16 @@ angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard'])
       }
     }
   })
+  .state('inventory.paints.view', {
+    url: '/paints/:id',
+    views: {
+      'mainTabs@tabs': {
+        controller: 'ViewPaintsCtrl',
+        controllerAs: 'viewPaints',
+        templateUrl: modulesPath + 'inventory/views/view-paints-by-manufacturer.html'
+      }
+    }
+  })
   .state('inventory.supplies', {
     url: '/supplies',
     views: {

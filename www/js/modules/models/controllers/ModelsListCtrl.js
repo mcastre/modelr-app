@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', 'LoginSvc', '$timeout', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray, LoginSvc, $timeout) {
+.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', 'LoginSvc', '$timeout', '$cordovaToast', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray, LoginSvc, $timeout, $cordovaToast) {
   var models = this;
   var modelsRef = firebase.database().ref().child('modelsCollection');
   models.allModels = {};
@@ -32,9 +32,9 @@ angular.module('modelrApp')
 
   AuthSvc.$onAuthStateChanged(function(authData) {
     if (authData) {
-      $ionicLoading.hide();
       getUserModels(authData);
       console.log('Logged in', authData);
+      $cordovaToast.show('Signed in as: ' + authData.email, 'short', 'bottom');
     } else {
       $ionicLoading.hide();
       console.log('Logged out');

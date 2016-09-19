@@ -1,27 +1,14 @@
-<ion-nav-bar class="bar bar-header bar-transparent nav-title-slide-ios7">
-  <button class="button button-icon icon ion-chevron-left back-button-white" ui-sref="models"></button>
-  <ion-nav-title>{{model.data.title}}</ion-nav-title>
-</ion-nav-bar>
 <ion-nav-view animation="slide-left-right">
   <ion-view>
     <ion-content class="layout-detail">
+      <div class="card-detail-header">
+        <a href="" ui-sref="models" class="close-icon"><i class="icon ion-close"></i></a>
+      </div>
       <!-- HAS MODEL IMAGE  -->
-      <header class="hero-image has-scrim" ng-if="model.modelImage" style="background-image: url(data:image/jpeg;base64,{{model.modelImage}})">
-        <div class="icon-nav-bar">
-          <div class="icon-nav">
-            <div class="icon-nav-col">
-              <button class="button button-dark icon ion-gear-a"></button>
-            </div>
-            <div class="icon-nav-col">
-              <button class="button button-dark icon ion-settings"></button>
-            </div>
-            <div class="icon-nav-col">
-              <button class="button button-dark icon ion-settings"></button>
-            </div>
-            <div class="icon-nav-col">
-              <button class="button button-dark icon ion-share"></button>
-            </div>
-          </div>
+      <header class="hero-image has-scrim" ng-if="model.modelImage">
+        <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%">
+        <div class="hero-bottom-actions">
+          <button class="button button-small button-dark icon-right change-image-button" ng-click="model.openCameraActionSheet()">Change Picture <i class="icon ion-camera"></i></button>
         </div>
       </header>
       <!-- NO MODEL IMAGE -->
@@ -33,35 +20,81 @@
           </button>
         </div>
       </header>
-      <div class="list">
-        <div class="item item-icon-left">
-          <i class="icon ion-person"></i>
-          <small>Builder</small>
-          <p>{{model.data.builder}}</p>
+      <section class="card-detail-view">
+        <div class="list-header-bar">
+          <h1 class="list-header-title">{{model.data.title}}</h1>
+          <p class="list-header-subtitle">{{model.data.scale}}</p>
+          <p class="list-header-subtitle">{{model.data.status}}</p>
         </div>
-        <div class="item item-icon-left">
-          <i class="icon ion-clock"></i>
-          <small>Date Started</small>
-          <p>{{model.data.dateStarted | date}}</p>
+        <div class="list model-detail-list">
+          <div class="item">
+            <ul class="card-secondary-nav">
+              <li>
+                <a href="">
+                  <i class="icon ion-paintbucket card-nav-icon"></i>
+                  <span class="card-nav-label">Paints</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="icon ion-wrench card-nav-icon"></i>
+                  <span class="card-nav-label">Supplies</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="icon ion-images card-nav-icon"></i>
+                  <span class="card-nav-label">Gallery</span>
+                </a>
+              </li>
+              <li>
+                <a href="">
+                  <i class="icon ion-forward card-nav-icon"></i>
+                  <span class="card-nav-label">Share</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="item item-icon-left">
+            <i class="icon ion-clock"></i>
+            <small>Date Started</small>
+            <p>{{model.data.dateStarted | date}}</p>
+          </div>
+          <div class="item item-icon-left item-button-right" ng-if="!model.isEditModeStatus">
+            <span class="status-circle as-list-item" ng-class="{
+              'status-awaiting-build': model.data.status === 'Awaiting Build',
+              'status-in-progress': model.data.status === 'In Progress',
+              'status-completed': model.data.status === 'Completed'}">
+            </span>
+            <small>Project Status</small>
+            <p>{{model.data.status}}</p>
+            <button class="button button-clear button-energized" ng-click="model.toggleEditModeStatus()">Edit</button>
+          </div>
+          <!-- STATUS EDIT MODE -->
+          <div ng-include="'js/modules/model-detail/templates/edit-model-status.html'"></div>
+          <div class="item item-icon-left item-button-right" ng-if="!model.isEditModeClass">
+            <i class="icon ion-ribbon-b"></i>
+            <small>Class</small>
+            <p>{{model.data.classType}}</p>
+            <button class="button button-clear button-energized" ng-click="model.toggleEditModeClass()">Edit</button>
+          </div>
+          <!-- CLASS EDIT MODE -->
+          <div ng-include="'/js/modules/model-detail/templates/edit-model-class.html'"></div>
+          <div class="item item-icon-left item-button-right" ng-if="!model.isEditModeManufacturer">
+            <i class="icon ion-pricetag"></i>
+            <small>Manufacturer</small>
+            <p>{{model.data.manufacturer}}</p>
+            <button class="button button-clear button-energized" ng-click="model.toggleEditModeManufacturer()">Edit</button>
+          </div>
+          <!-- MANUFACTURER EDIT MODE -->
+          <div ng-include="'/js/modules/model-detail/templates/edit-model-manufacturer.html'"></div>
+          <div class="item item-icon-left" ng-if="model.data.description">
+            <i class="icon ion-android-list"></i>
+            <small>Description</small>
+            <p>{{model.data.description}}</p>
+          </div>
         </div>
-        <div class="item item-icon-left item-button-right">
-          <i class="icon ion-ribbon-b"></i>
-          <small>Class</small>
-          <p>{{model.data.classType}}</p>
-          <button class="button button-clear button-energized">Edit</button>
-        </div>
-        <div class="item item-icon-left item-button-right">
-          <i class="icon ion-pricetag"></i>
-          <small>Manufacturer</small>
-          <p>{{model.data.manufacturer}}</p>
-          <button class="button button-clear button-energized">Edit</button>
-        </div>
-        <div class="item item-icon-left" ng-if="model.data.description">
-          <i class="icon ion-android-list"></i>
-          <small>Description</small>
-          <p>{{model.data.description}}</p>
-        </div>
-      </div>
+      </section>
     </ion-content>
   </ion-view>
 </ion-nav-view>

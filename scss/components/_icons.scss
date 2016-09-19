@@ -42,7 +42,7 @@
   width: 40px;
   height: 40px;
   border-radius: 100rem;
-  border: 1px solid rgba(black, 0.2);
+  border: 1px solid rgba(black, 0.1);
 }
 .status-circle {
   float: left;
@@ -53,4 +53,21 @@
   background-color: $app-primary;
   -webkit-border-radius: 100rem;
   border-radius: 100rem;
+  &.as-list-item {
+    position: absolute;
+    top: 28px;
+    left: 14px;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+  }
+  &.status-awaiting-build {
+    background-color: $app-light-gray;
+  }
+  &.status-in-progress {
+    background-color: $app-secondary;
+  }
+  &.status-completed {
+    background-color: $app-primary;
+  }
 }

@@ -1,0 +1,10 @@
+<div class="item item-icon-left item-button-right" ng-if="model.isEditModeClass">
+  <i class="icon ion-ribbon-b"></i>
+  <small>Class</small>
+  <form class="list">
+    <label class="item item-input">
+      <input type="text" placeholder="Class Type" ng-model="model.data.classType">
+    </label>
+  </form>
+  <button class="button button-clear button-positive" ng-click="model.updateClass(model.data.classType)">Update</button>
+</div>

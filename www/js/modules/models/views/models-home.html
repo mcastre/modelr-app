@@ -7,12 +7,16 @@
       <h2 class="view-subheader">Empty! So sad...</h2>
       <p class="view-content">Tap the Add New Model button to add a model!</p>
     </section>
-    <div class="list card" ng-repeat="(modelID, model) in models.allModels">
-      <div class="item">
-        <h2><a href="" ui-sref="model({id: modelID})">{{model.title}}</a></h2>
-        <p>{{model.builder}} - {{model.dateStarted | date}}</p>
+    <div class="list card model-card" ng-repeat="(modelID, model) in models.allModels">
+      <div class="card-image-full">
+        <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%">
       </div>
-      <div class="card-image-full" style="background-image: url(data:image/jpeg;base64,{{model.modelImage}})"  ng-if="model.modelImage"></div>
+      <div class="item">
+        <div class="card-title-wrapper">
+          <h2 class="card-title"><a href="" ui-sref="model({id: modelID})">{{model.title}}</a></h2>
+          <p>{{model.builder}} - {{model.dateStarted | date}}</p>
+        </div>
+      </div>
       <div class="item item-body">
         <ul class="list-in-card">
           <li class="card-list-item">
@@ -42,7 +46,13 @@
         <i class="icon ion-chevron-right"></i>
       </a>
       <div class="item item-text-wrap">
-        <span class="card-status"><span class="status-circle"></span>{{model.status}}</span>
+        <span class="card-status">
+          <span class="status-circle" ng-class="{
+            'status-awaiting-build': model.status === 'Awaiting Build',
+            'status-in-progress': model.status === 'In Progress',
+            'status-completed': model.status === 'Completed'}">
+          </span>{{model.status}}
+        </span>
         <ul class="card-actions-right">
           <li>
             <button class="button button-clear button-dark">

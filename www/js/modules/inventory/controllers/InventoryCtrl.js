@@ -1,10 +1,14 @@
 angular.module('modelrApp')
-.controller('InventoryCtrl', ['$state', '$ionicConfig', function InventoryCtrl($state, $ionicConfig) {
+.controller('InventoryCtrl', ['$state', '$ionicConfig', 'PaintsSvc', function InventoryCtrl($state, $ionicConfig, PaintsSvc) {
 
   var inventory = this;
 
   inventory.currentTab = {
     index: 0
+  };
+
+  inventory.paintsCount = function () {
+    return PaintsSvc.getPaintsCount();
   };
 
   inventory.onClickTab = function (tabIndex) {

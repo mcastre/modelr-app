@@ -17,3 +17,22 @@
   margin-top: -12px;
   @extend %list-inline;
 }
+
+.list-header-bar {
+  display: block;
+  background-color: $app-primary-darker;
+  padding: 15px;
+  .list-header-title {
+    font-size: $app-subheader-font-size;
+    color: white;
+    margin: 0;
+  }
+  .list-header-subtitle {
+    font-size: 12px;
+    color: white;
+    margin: 0;
+  }
+}
+.model-detail-list > .item.item-button-right > .button.button-clear {
+  font-size: ($app-base-font-size - 2px);
+}
