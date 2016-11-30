@@ -68,6 +68,7 @@ a.card-link-item {
     width: calc(100% / 3);
     text-align: center;
     padding: 0 $default-spacing;
+    opacity: 0.7;
     .card-nav-icon {
       display: block;
       font-size: $app-header-font-size;
@@ -76,6 +77,9 @@ a.card-link-item {
       padding-top: 7px;
       display: block;
       font-size: $app-base-font-size;
+    }
+    &.is-active {
+      opacity: 1;
     }
   }
 }

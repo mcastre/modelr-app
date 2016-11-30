@@ -1,8 +1,13 @@
 angular.module('modelrApp')
-.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet) {
+.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', 'PaintsSvc', '$firebaseArray', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, PaintsSvc, $firebaseArray) {
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
+
+  // SUPPLIES REFS
+  var suppliesRef = firebase.database().ref().child('suppliesCollection');
+  var modelSuppliesRef = modelRef.child('Supplies');
+  model.supplies = $firebaseArray(modelSuppliesRef);
 
   model.data = $firebaseObject(modelRef);
   model.modelImage = '';
@@ -10,6 +15,13 @@ angular.module('modelrApp')
   model.isEditModeStatus = false;
   model.isEditModeClass = false;
   model.isEditModeManufacturer = false;
+  model.showMainView = true;
+  model.showPaintsView = false;
+
+  model.modelSupplies = {};
+  model.supplyItem = {
+    name: ''
+  };
 
   modelRef.on('value', function (snap) {
     model.modelImage = snap.val().modelImage;
@@ -108,6 +120,67 @@ angular.module('modelrApp')
   model.updateManufacturer = function (newValue) {
     modelRef.child('manufacturer').set(newValue);
     model.isEditModeManufacturer = false;
+  };
+
+  // VIEW LOGIC
+  model.tabs = [
+    {
+      title: 'Details',
+      icon: 'ion-jet',
+      url: 'js/modules/model-detail/templates/model-details-list.html'
+    },
+    {
+      title: 'Paints',
+      icon: 'ion-paintbucket',
+      url: 'js/modules/model-detail/views/model-paints.html'
+    },
+    {
+      title: 'Supplies',
+      icon: 'ion-wrench',
+      url: 'js/modules/model-detail/views/model-supplies.html'
+    },
+    {
+      title: 'Gallery',
+      icon: 'ion-images',
+      url: 'js/modules/model-detail/views/model-gallery.html'
+    }
+  ];
+
+  model.currentTab = model.tabs[0];
+
+  model.onClickTab = function (tab) {
+    model.currentTab = tab;
+  };
+
+  model.isActiveTab = function (tabURL) {
+    return tabURL === model.currentTab.url;
+  };
+
+  // MODEL PAINTS
+  model.getModelPaints = function () {
+    return PaintsSvc.getModelPaints();
+  };
+
+  // MODEL Supplies
+  model.addSupplyItem = function(item) {
+    model.supplies.$add(item)
+      .then(function(ref) {
+        console.log(ref);
+        var modelId = ref.key;
+        model.supplies.$save(modelId);
+      });
+
+    model.supplyItem.name = '';
+  };
+
+  model.removeSupplyItem = function(item) {
+    model.supplies.$remove(item).then(function(ref) {
+      console.log('Removed item: ', ref.key);
+    });
+  };
+
+  model.modelHasSupplies = function () {
+    return Object.keys(model.modelSupplies).length;
   };
 
 }]);

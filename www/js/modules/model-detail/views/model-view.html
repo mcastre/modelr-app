@@ -26,10 +26,12 @@
           <p class="list-header-subtitle">{{model.data.scale}}</p>
           <p class="list-header-subtitle">{{model.data.status}}</p>
         </div>
-        <ng-include src="'js/modules/model-detail/templates/model-details-list.html'"></ng-include>
-        <div class="remove-model-wrapper">
-          <button class="button button-clear button-assertive">Remove Model</button>
-        </div>
+        <div class="list model-detail-list">
+          <!-- MODEL NAV BAR -->
+          <ng-include src="'js/modules/model-detail/templates/model-nav-bar.html'"></ng-include>
+          <!-- MODEL VIEWS -->
+          <ng-include src="model.currentTab.url"></ng-include>
+        </div>        
       </section>
     </ion-content>
   </ion-view>

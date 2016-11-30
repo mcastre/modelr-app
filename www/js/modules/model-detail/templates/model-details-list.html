@@ -1,68 +1,46 @@
-<div class="list model-detail-list">
-  <div class="item">
-    <ul class="card-secondary-nav">
-      <li>
-        <a href="">
-          <i class="icon ion-paintbucket card-nav-icon"></i>
-          <span class="card-nav-label">Paints</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="icon ion-wrench card-nav-icon"></i>
-          <span class="card-nav-label">Supplies</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="icon ion-images card-nav-icon"></i>
-          <span class="card-nav-label">Gallery</span>
-        </a>
-      </li>
-      <li>
-        <a href="">
-          <i class="icon ion-forward card-nav-icon"></i>
-          <span class="card-nav-label">Share</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div class="item item-icon-left">
-    <i class="icon ion-clock"></i>
-    <small>Date Started</small>
-    <p>{{model.data.dateStarted | date}}</p>
-  </div>
-  <div class="item item-icon-left item-button-right" ng-if="!model.isEditModeStatus">
-    <span class="status-circle as-list-item" ng-class="{
-      'status-awaiting-build': model.data.status === 'Awaiting Build',
-      'status-in-progress': model.data.status === 'In Progress',
-      'status-completed': model.data.status === 'Completed'}">
-    </span>
-    <small>Project Status</small>
-    <p>{{model.data.status}}</p>
-    <button class="button button-clear button-energized" ng-click="model.toggleEditModeStatus()">Edit</button>
-  </div>
-  <!-- STATUS EDIT MODE -->
-  <ng-include src="'js/modules/model-detail/templates/edit-model-status.html'"></ng-include>
-  <div class="item item-icon-left item-button-right" ng-if="!model.isEditModeClass">
-    <i class="icon ion-ribbon-b"></i>
-    <small>Class</small>
-    <p>{{model.data.classType}}</p>
-    <button class="button button-clear button-energized" ng-click="model.toggleEditModeClass()">Edit</button>
-  </div>
-  <!-- CLASS EDIT MODE -->
-  <ng-include src="'js/modules/model-detail/templates/edit-model-class.html'"></ng-include>
-  <div class="item item-icon-left item-button-right" ng-if="!model.isEditModeManufacturer">
-    <i class="icon ion-pricetag"></i>
-    <small>Manufacturer</small>
-    <p>{{model.data.manufacturer}}</p>
-    <button class="button button-clear button-energized" ng-click="model.toggleEditModeManufacturer()">Edit</button>
-  </div>
-  <!-- MANUFACTURER EDIT MODE -->
-  <ng-include src="'js/modules/model-detail/templates/edit-model-manufacturer.html'"></ng-include>
-  <div class="item item-icon-left" ng-if="model.data.description">
-    <i class="icon ion-android-list"></i>
-    <small>Description</small>
-    <p>{{model.data.description}}</p>
-  </div>
+<div class="item item-icon-left">
+  <i class="icon ion-clock"></i>
+  <small>Date Started</small>
+  <p>{{model.data.dateStarted | date}}</p>
+</div>
+
+<div class="item item-icon-left item-button-right" ng-if="!model.isEditModeStatus">
+  <span class="status-circle as-list-item" ng-class="{
+    'status-awaiting-build': model.data.status === 'Awaiting Build',
+    'status-in-progress': model.data.status === 'In Progress',
+    'status-completed': model.data.status === 'Completed'}">
+  </span>
+  <small>Project Status</small>
+  <p>{{model.data.status}}</p>
+  <button class="button button-clear button-energized" ng-click="model.toggleEditModeStatus()">Edit</button>
+</div>
+<!-- STATUS EDIT MODE -->
+<ng-include src="'js/modules/model-detail/templates/edit-model-status.html'"></ng-include>
+
+<div class="item item-icon-left item-button-right" ng-if="!model.isEditModeClass">
+  <i class="icon ion-ribbon-b"></i>
+  <small>Class</small>
+  <p>{{model.data.classType}}</p>
+  <button class="button button-clear button-energized" ng-click="model.toggleEditModeClass()">Edit</button>
+</div>
+<!-- CLASS EDIT MODE -->
+<ng-include src="'js/modules/model-detail/templates/edit-model-class.html'"></ng-include>
+
+<div class="item item-icon-left item-button-right" ng-if="!model.isEditModeManufacturer">
+  <i class="icon ion-pricetag"></i>
+  <small>Manufacturer</small>
+  <p>{{model.data.manufacturer}}</p>
+  <button class="button button-clear button-energized" ng-click="model.toggleEditModeManufacturer()">Edit</button>
+</div>
+<!-- MANUFACTURER EDIT MODE -->
+<ng-include src="'js/modules/model-detail/templates/edit-model-manufacturer.html'"></ng-include>
+
+<div class="item item-icon-left" ng-if="model.data.description">
+  <i class="icon ion-android-list"></i>
+  <small>Description</small>
+  <p>{{model.data.description}}</p>
+</div>
+
+<div class="remove-model-wrapper">
+  <button class="button button-clear button-block button-assertive">Remove Model</button>
 </div>

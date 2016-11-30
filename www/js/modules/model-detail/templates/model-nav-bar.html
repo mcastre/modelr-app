@@ -1,0 +1,10 @@
+<div class="item">
+  <ul class="card-secondary-nav">
+    <li ng-repeat="tab in model.tabs" ng-class="{'is-active': model.isActiveTab(tab.url)}">
+      <a href="" ng-click="model.onClickTab(tab)">
+        <i class="icon card-nav-icon {{tab.icon}}"></i>
+        <span class="card-nav-label">{{tab.title}}</span>
+      </a>
+    </li>
+  </ul>
+</div>

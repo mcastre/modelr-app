@@ -11,7 +11,6 @@ angular.module('modelrApp')
         $state.go('model', {'id': name});
         id.once('value', function (snap) {
           var data = snap.exportVal();
-          console.log(data);
         });
       }
     });

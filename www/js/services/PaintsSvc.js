@@ -4,6 +4,10 @@ angular.module('modelrApp')
   var paintsCollectionRef = firebase.database().ref().child('paintsCollection');
   var paints = $firebaseArray(paintsCollectionRef);
 
+  // MODEL SPECIFIC PAINTS
+  var modelPaintsRef = firebase.database().ref('users/models/paints/');
+  var modelPaints = $firebaseArray(modelPaintsRef);
+
   var paintManufacturers = [
     {
       'name': '502 Abteilung Oils',
@@ -82,6 +86,10 @@ angular.module('modelrApp')
     return paints;
   }
 
+  function getModelPaints () {
+    return modelPaints;
+  }
+
   function getPaintManufacturers () {
     return paintManufacturers;
   }
@@ -98,6 +106,7 @@ angular.module('modelrApp')
 
   return {
     getPaints: getPaints,
+    getModelPaints: getModelPaints,
     getPaintsCount: getPaintsCount,
     getPaintManufacturers: getPaintManufacturers,
     addPaint: addPaint

@@ -1,71 +1,30 @@
 <ion-view view-title="My Models">
   <ion-content class="padding has-tabs">
     <div class="button-wrapper">
-      <button class="button button-block button-positive" ui-sref="wizard.new">Add New Model</button>
+      <button class="button ion-plus icon button-positive" ui-sref="wizard.new"></button>
+      <!-- List View -->
+      <span ng-if="models.isListView">
+        <button class="button button-clear button-positive view-switch-button" ng-click="models.isListView = !models.isListView">
+          <div class="icon-button-icon" ng-include="'img/card-view-icon.svg'"></div>
+        </button>
+      </span>
+      <!-- Card View -->
+      <span ng-if="!models.isListView">
+        <button class="button button-clear button-positive view-switch-button"  ng-click="models.isListView = !models.isListView">
+          <div class="icon-button-icon" ng-include="'img/list-view-icon.svg'"></div>
+        </button>
+      </span>
+
     </div>
     <section class="view-basic" ng-if="models.userHasModels() === 0">
       <h2 class="view-subheader">Empty! So sad...</h2>
       <p class="view-content">Tap the Add New Model button to add a model!</p>
     </section>
-    <div class="list card model-card" ng-repeat="(modelID, model) in models.allModels">
-      <div class="card-image-full">
-        <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%">
-      </div>
-      <div class="item">
-        <div class="card-title-wrapper">
-          <h2 class="card-title"><a href="" ui-sref="model({id: modelID})">{{model.title}}</a></h2>
-          <p>{{model.builder}} - {{model.dateStarted | date}}</p>
-        </div>
-      </div>
-      <div class="item item-body">
-        <ul class="list-in-card">
-          <li class="card-list-item">
-            <small class="card-list-label">Scale</small>
-            <p class="card-list-value">{{model.scale}}</p>
-          </li>
-          <li class="card-list-item">
-            <small class="card-list-label">Manufacturer</small>
-            <p class="card-list-value">{{model.manufacturer}}</p>
-          </li>
-          <li class="card-list-item">
-            <small class="card-list-label">Class</small>
-            <p class="card-list-value">{{model.classType}}</p>
-          </li>
-          <li class="card-list-item" ng-if="model.description">
-            <small class="card-list-label">Description</small>
-            <p class="card-list-value">{{model.description}}</p>
-          </li>
-        </ul>
-      </div>
-      <a class="item item-icon-right card-link-item" ui-sref="inventory.paints">
-        Paints <span class="card-item-count">5</span>
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <a class="item item-icon-right card-link-item" ui-sref="inventory.supplies">
-        Supplies
-        <i class="icon ion-chevron-right"></i>
-      </a>
-      <div class="item item-text-wrap">
-        <span class="card-status">
-          <span class="status-circle" ng-class="{
-            'status-awaiting-build': model.status === 'Awaiting Build',
-            'status-in-progress': model.status === 'In Progress',
-            'status-completed': model.status === 'Completed'}">
-          </span>{{model.status}}
-        </span>
-        <ul class="card-actions-right">
-          <li>
-            <button class="button button-clear button-dark">
-              <i class="icon ion-forward"></i>
-            </button>
-          </li>
-          <li>
-            <button class="button button-clear button-dark">
-              <i class="icon ion-chatbox"></i>
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <section class="home-models-view">
+      <!-- List View -->
+      <ng-include src="'js/modules/models/templates/models-list-view.html'" ng-if="models.isListView"></ng-include>
+      <!-- Card View -->
+      <ng-include src="'js/modules/models/templates/models-card-view.html'" ng-if="!models.isListView"></ng-include>
+    </section>
   </ion-content>
 </ion-view>

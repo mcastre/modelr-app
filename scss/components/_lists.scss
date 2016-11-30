@@ -36,3 +36,10 @@
 .model-detail-list > .item.item-button-right > .button.button-clear {
   font-size: ($app-base-font-size - 2px);
 }
+.home-models-view {
+  padding: 20px 0;
+  .card {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+}
