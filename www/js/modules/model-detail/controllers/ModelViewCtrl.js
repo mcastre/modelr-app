@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', 'PaintsSvc', '$firebaseArray', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, PaintsSvc, $firebaseArray) {
+.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal) {
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
@@ -8,6 +8,11 @@ angular.module('modelrApp')
   var suppliesRef = firebase.database().ref().child('suppliesCollection');
   var modelSuppliesRef = modelRef.child('Supplies');
   model.supplies = $firebaseArray(modelSuppliesRef);
+
+  // PAINTS REFS
+  var paintsRef = firebase.database().ref().child('paintsCollection');
+  var modelPaintsRef = modelRef.child('Paints');
+  model.paints = $firebaseArray(modelPaintsRef);
 
   model.data = $firebaseObject(modelRef);
   model.modelImage = '';
@@ -21,6 +26,15 @@ angular.module('modelrApp')
   model.modelSupplies = {};
   model.supplyItem = {
     name: ''
+  };
+
+  model.paint = {
+    title: '',
+    manufacturer: '',
+    type: '',
+    hexKey: '',
+    swatch: '',
+    inStock: false
   };
 
   modelRef.on('value', function (snap) {
@@ -156,12 +170,8 @@ angular.module('modelrApp')
     return tabURL === model.currentTab.url;
   };
 
-  // MODEL PAINTS
-  model.getModelPaints = function () {
-    return PaintsSvc.getModelPaints();
-  };
+  // MODEL SUPPLIES ----------------------------------------------
 
-  // MODEL Supplies
   model.addSupplyItem = function(item) {
     model.supplies.$add(item)
       .then(function(ref) {
@@ -181,6 +191,45 @@ angular.module('modelrApp')
 
   model.modelHasSupplies = function () {
     return Object.keys(model.modelSupplies).length;
+  };
+
+  // ADD MODEL PAINTS ----------------------------------------------
+
+  // ADD PAINT MODAL
+  $ionicModal.fromTemplateUrl('js/modules/model-detail/templates/add-model-paints-modal-template.html', function($ionicModal) {
+    model.modal = $ionicModal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  model.openAddPaintModal = function () {
+    model.modal.show();
+  };
+
+  model.closeAddPaintModal = function () {
+    model.modal.hide();
+  };
+
+  model.addPaint = function (paint) {
+    console.log(paint);
+    model.paints.$add(paint)
+      .then(function(ref) {
+        var modelId = ref.key;
+        model.paints.$save(modelId);
+        console.log('Paint saved successfully: ', modelId);
+        model.modal.hide();
+      });
+
+      model.paint = {
+        title: '',
+        manufacturer: '',
+        type: '',
+        hexKey: '',
+        swatch: '',
+        inStock: false
+      };
+
   };
 
 }]);

@@ -1,0 +1,49 @@
+<div class="modal app-modal">
+  <header class="login-modal-header">
+    <div class="login-modal-subtitle">
+      <h3>Add Paint</h3>
+      <p class="subtitle">Enter the paint information.</p>
+    </div>
+    <div class="close-modal-button button button-clear" ng-click="model.closeAddPaintModal()"><span class="icon ion-close"></span></div>
+  </header>
+  <section class="login-form-wrapper">
+    <form name="newPaintForm">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Name</span>
+          <input type="text" ng-model="model.paint.title">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Manufacturer</span>
+          <input type="text" ng-model="model.paint.manufacturer">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Type</span>
+          <input type="text" ng-model="model.paint.type">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Hex Key</span>
+          <input type="text" ng-model="model.paint.hexKey">
+        </label>
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Swatch Color (hex)</span>
+          <input type="text" ng-model="model.paint.swatch">
+        </label>
+        <div class="item item-toggle">
+          In Stock?
+          <label class="toggle toggle-dark">
+            <input type="checkbox" ng-model="model.paint.inStock">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="model.addPaint(model.paint)">Add Paint</button>
+        <button class="button button-block button-stable" ng-click="model.closeAddPaintModal()">Cancel</button>
+        <button class="button button-clear button-light" ng-click="model.clearPaintForm()">Clear</button>
+      </div>
+    </form>
+  </section>
+</div>
