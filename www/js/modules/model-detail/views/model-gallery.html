@@ -1,0 +1,8 @@
+<ul class="col-list-3">
+  <li ng-repeat="photo in model.photos">
+    <button class="button button-clear">
+      <img ng-src="data:image/jpeg;base64,{{photo.$value}}" alt="Model Image" width="100%">
+    </button>
+  </li>
+</ul>
+<button class="button button-block button-clear button-positive" ng-click="model.addGalleryPhoto()">Upload From Photos</button>

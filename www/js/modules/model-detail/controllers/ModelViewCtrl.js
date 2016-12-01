@@ -1,20 +1,15 @@
 angular.module('modelrApp')
-.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal) {
+.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc) {
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
 
-  // SUPPLIES REFS
-  var suppliesRef = firebase.database().ref().child('suppliesCollection');
-  var modelSuppliesRef = modelRef.child('Supplies');
-  model.supplies = $firebaseArray(modelSuppliesRef);
-
-  // PAINTS REFS
-  var paintsRef = firebase.database().ref().child('paintsCollection');
-  var modelPaintsRef = modelRef.child('Paints');
-  model.paints = $firebaseArray(modelPaintsRef);
-
   model.data = $firebaseObject(modelRef);
+
+  model.supplies = ModelSuppliesSvc.getModelSupplies();
+  model.paints = ModelPaintsSvc.getModelPaints();
+  model.photos = ModelImageUploadSvc.getGalleryPhotos();
+
   model.modelImage = '';
   model.statusChange = '';
   model.isEditModeStatus = false;
@@ -23,7 +18,6 @@ angular.module('modelrApp')
   model.showMainView = true;
   model.showPaintsView = false;
 
-  model.modelSupplies = {};
   model.supplyItem = {
     name: ''
   };
@@ -65,47 +59,17 @@ angular.module('modelrApp')
     })
   }
 
-  function writeModelImage(image) {
-    modelRef.update({ modelImage: image });
-  }
-
   model.accessCamera = function() {
     model.images = [];
-    var options = {
-      quality : 75,
-      destinationType : Camera.DestinationType.DATA_URL,
-      sourceType : Camera.PictureSourceType.CAMERA,
-      allowEdit : true,
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: true
-    };
-    $cordovaCamera.getPicture(options).then(function(imageData) {
-      writeModelImage(newName);
-    }, function(error) {
-      console.log(error);
-    });
+    ModelImageUploadSvc.accessCamera();
   };
 
   model.accessPhotos = function() {
-    var options = {
-      quality : 75,
-      destinationType : Camera.DestinationType.DATA_URL,
-      sourceType : Camera.PictureSourceType.PHOTOLIBRARY,
-      allowEdit : true,
-      encodingType: Camera.EncodingType.JPEG,
-      popoverOptions: CameraPopoverOptions,
-      targetWidth: 500,
-      targetHeight: 500,
-      saveToPhotoAlbum: false
-    };
-    $cordovaCamera.getPicture(options).then(function(imageData) {
-      writeModelImage(imageData);
-    }, function(error) {
-      console.log(error);
-    });
+    ModelImageUploadSvc.accessPhotos();
+  };
+
+  model.addGalleryPhoto = function() {
+    ModelImageUploadSvc.addPhotoToGallery();
   };
 
   // Update Model Details
@@ -173,27 +137,15 @@ angular.module('modelrApp')
   // MODEL SUPPLIES ----------------------------------------------
 
   model.addSupplyItem = function(item) {
-    model.supplies.$add(item)
-      .then(function(ref) {
-        console.log(ref);
-        var modelId = ref.key;
-        model.supplies.$save(modelId);
-      });
-
+    ModelSuppliesSvc.addSupplyItem(item);
     model.supplyItem.name = '';
   };
 
   model.removeSupplyItem = function(item) {
-    model.supplies.$remove(item).then(function(ref) {
-      console.log('Removed item: ', ref.key);
-    });
+    ModelSuppliesSvc.removeSupplyItem(item);
   };
 
-  model.modelHasSupplies = function () {
-    return Object.keys(model.modelSupplies).length;
-  };
-
-  // ADD MODEL PAINTS ----------------------------------------------
+  // MODEL PAINTS ----------------------------------------------
 
   // ADD PAINT MODAL
   $ionicModal.fromTemplateUrl('js/modules/model-detail/templates/add-model-paints-modal-template.html', function($ionicModal) {
@@ -212,24 +164,18 @@ angular.module('modelrApp')
   };
 
   model.addPaint = function (paint) {
-    console.log(paint);
-    model.paints.$add(paint)
-      .then(function(ref) {
-        var modelId = ref.key;
-        model.paints.$save(modelId);
-        console.log('Paint saved successfully: ', modelId);
-        model.modal.hide();
-      });
+    ModelPaintsSvc.addModelPaint(paint);
 
-      model.paint = {
-        title: '',
-        manufacturer: '',
-        type: '',
-        hexKey: '',
-        swatch: '',
-        inStock: false
-      };
+    model.paint = {
+      title: '',
+      manufacturer: '',
+      type: '',
+      hexKey: '',
+      swatch: '',
+      inStock: false
+    };
 
+    model.modal.hide();
   };
 
 }]);

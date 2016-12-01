@@ -80,3 +80,24 @@
   width: 100%;
   z-index: 2;
 }
+
+.col-list-3 {
+  list-style: none;
+  padding: 20px;
+  @include clearfix;
+  li {
+    float: left;
+    width: calc(100% / 3);
+    list-style-type: none;
+    padding: 0;
+    .button {
+      max-width: 100%;
+      max-height: 100%;
+      padding: 0;
+    }
+  }
+  li:nth-child(3n + 1) {
+    clear: left;
+    padding-left: 0;
+  }
+}
