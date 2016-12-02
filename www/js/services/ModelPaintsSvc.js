@@ -10,19 +10,13 @@ function modelPaintsSvc($firebaseArray, $stateParams) {
     addModelPaint: addModelPaint
   };
 
-  var pathID = $stateParams.id;
-  var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
-
-  // SUPPLIES REFS
-  var modelPaintsRef = modelRef.child('Paints');
-  var paints = $firebaseArray(modelPaintsRef);
-
   function getModelPaints() {
-    return paints;
+    var modelPaintsRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Paints');
+    return $firebaseArray(modelPaintsRef);
   }
 
   function addModelPaint(paint) {
-    paints.$add(paint)
+    $firebaseArray(modelPaintsRef).$add(paint)
       .then(function(ref) {
         var modelId = ref.key;
         paints.$save(modelId);

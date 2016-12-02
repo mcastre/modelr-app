@@ -11,19 +11,14 @@ function modelImageUploadSvc($cordovaCamera, $ionicActionSheet, $stateParams, $f
     getGalleryPhotos: getGalleryPhotos,
     addPhotoToGallery: addPhotoToGallery
   };
-
-  var pathID = $stateParams.id;
-  var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
-
-  var modelPhotosRef = modelRef.child('Photos');
-  var photos = $firebaseArray(modelPhotosRef);
+  var modelRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id);
 
   function writeModelImage(image) {
     modelRef.update({ modelImage: image });
   }
 
   function writePhotoGalleryImage(image) {
-    photos.$add(image)
+    $firebaseArray(modelPhotosRef).$add(image)
       .then(function(ref) {
         var modelId = ref.key;
       });
@@ -70,7 +65,8 @@ function modelImageUploadSvc($cordovaCamera, $ionicActionSheet, $stateParams, $f
   }
 
   function getGalleryPhotos() {
-    return photos;
+    var modelPhotosRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Photos');
+    return $firebaseArray(modelPhotosRef);
   }
 
   function addPhotoToGallery() {

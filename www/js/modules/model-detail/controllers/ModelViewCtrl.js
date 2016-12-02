@@ -32,13 +32,6 @@ angular.module('modelrApp')
     inStock: false
   };
 
-  model.gallerySlider = {
-    loop: false,
-    effect: 'slide',
-    speed: 400,
-    initalSlide: 1
-  }
-
   modelRef.on('value', function (snap) {
     model.modelImage = snap.val().modelImage;
   });

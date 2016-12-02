@@ -11,19 +11,13 @@ function ModelSuppliesSvc($firebaseArray, $stateParams) {
     removeSupplyItem: removeSupplyItem
   };
 
-  var pathID = $stateParams.id;
-  var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
-
-  // SUPPLIES REFS
-  var modelSuppliesRef = modelRef.child('Supplies');
-  var supplies = $firebaseArray(modelSuppliesRef);
-
   function getModelSupplies() {
-    return supplies;
+    var modelSuppliesRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Supplies');
+    return $firebaseArray(modelSuppliesRef);
   }
 
   function addSupplyItem(item) {
-    supplies.$add(item)
+    $firebaseArray(modelSuppliesRef).$add(item)
       .then(function(ref) {
         var modelId = ref.key;
         supplies.$save(modelId);
@@ -32,7 +26,7 @@ function ModelSuppliesSvc($firebaseArray, $stateParams) {
   }
 
   function removeSupplyItem(item) {
-    supplies.$remove(item)
+    $firebaseArray(modelSuppliesRef).$remove(item)
       .then(function(ref) {
         console.log('Removed item: ', ref.key);
       });

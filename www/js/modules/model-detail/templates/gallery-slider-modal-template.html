@@ -5,7 +5,9 @@
   <section class="photo-gallery-section">
     <ion-slide-box active-slide="model.slideIndex">
       <ion-slide ng-repeat="image in model.photos">
-        <img ng-src="data:image/jpeg;base64,{{image.$value}}" alt="Model Image" width="100%">
+        <ion-scroll class="zoomable-canvas" zooming="true" min-zoom="1" direction="xy" locking="false">
+          <img ng-src="data:image/jpeg;base64,{{image.$value}}" alt="Model Image" width="100%">
+        </ion-scroll>
       </ion-slide>
     </ion-slide-box>
   </section>
