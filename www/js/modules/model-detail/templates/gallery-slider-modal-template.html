@@ -1,0 +1,12 @@
+<div class="modal backdrop-modal">
+  <header class="login-modal-header">
+    <div class="close-modal-button button button-clear" ng-click="model.closeGallerySlider()"><span class="icon ion-close"></span></div>
+  </header>
+  <section class="photo-gallery-section">
+    <ion-slide-box active-slide="model.slideIndex">
+      <ion-slide ng-repeat="image in model.photos">
+        <img ng-src="data:image/jpeg;base64,{{image.$value}}" alt="Model Image" width="100%">
+      </ion-slide>
+    </ion-slide-box>
+  </section>
+</div>

@@ -223,6 +223,9 @@ a {
 .modal.modal-top-peek {
   margin-top: 2rem; }
 
+.modal.backdrop-modal {
+  background: rgba(0, 0, 0, 0.9); }
+
 .login-form-wrapper .item-stacked-label {
   background-color: rgba(0, 0, 0, 0.1); }
   .login-form-wrapper .item-stacked-label input {
@@ -481,6 +484,11 @@ a.card-link-item {
   .col-list-3 li:nth-child(3n + 1) {
     clear: left;
     padding-left: 0; }
+
+.photo-gallery-section .scroll-content {
+  height: 400px;
+  margin-top: 25%;
+  background: none; }
 
 .wizard-first .scroll-content {
   background: none; }

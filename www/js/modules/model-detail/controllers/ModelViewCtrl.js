@@ -10,6 +10,7 @@ angular.module('modelrApp')
   model.paints = ModelPaintsSvc.getModelPaints();
   model.photos = ModelImageUploadSvc.getGalleryPhotos();
 
+  model.slideIndex = 1;
   model.modelImage = '';
   model.statusChange = '';
   model.isEditModeStatus = false;
@@ -30,6 +31,13 @@ angular.module('modelrApp')
     swatch: '',
     inStock: false
   };
+
+  model.gallerySlider = {
+    loop: false,
+    effect: 'slide',
+    speed: 400,
+    initalSlide: 1
+  }
 
   modelRef.on('value', function (snap) {
     model.modelImage = snap.val().modelImage;
@@ -176,6 +184,24 @@ angular.module('modelrApp')
     };
 
     model.modal.hide();
+  };
+
+
+  $ionicModal.fromTemplateUrl('js/modules/model-detail/templates/gallery-slider-modal-template.html', function($ionicModal) {
+    model.galleryModal = $ionicModal;
+  }, {
+    scope: $scope,
+    animation: 'slide-in-up'
+  });
+
+  model.openGallerySlider = function (index) {
+    console.log(index);
+    model.galleryModal.show();
+    model.slideIndex = index;
+  };
+
+  model.closeGallerySlider = function () {
+    model.galleryModal.hide();
   };
 
 }]);

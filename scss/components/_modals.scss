@@ -20,3 +20,6 @@
 .modal.app-modal {
   @extend %teal-daylight-background;
 }
+.modal.backdrop-modal {
+  background: rgba(black, 0.9);
+}
