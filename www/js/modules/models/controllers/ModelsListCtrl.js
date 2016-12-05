@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', 'LoginSvc', '$timeout', '$cordovaToast', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray, LoginSvc, $timeout, $cordovaToast) {
+.controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', 'LoginSvc', '$timeout', '$cordovaToast', 'ModelPaintsSvc', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray, LoginSvc, $timeout, $cordovaToast, ModelPaintsSvc) {
   var models = this;
   var modelsRef = firebase.database().ref().child('modelsCollection');
   models.allModels = {};
@@ -44,6 +44,14 @@ angular.module('modelrApp')
 
   models.userHasModels = function () {
     return Object.keys(models.allModels).length;
+  };
+
+  models.getModelPaintsCount = function (paints) {
+    return Object.keys(paints).length;
+  };
+
+  models.getModelSuppliesCount = function (supplies) {
+    return Object.keys(supplies).length;
   };
 
   firebase.auth().getRedirectResult().then(function(result) {
