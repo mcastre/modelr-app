@@ -18,6 +18,7 @@ function modelImageUploadSvc($cordovaCamera, $ionicActionSheet, $stateParams, $f
   }
 
   function writePhotoGalleryImage(image) {
+    var modelPhotosRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Photos');
     $firebaseArray(modelPhotosRef).$add(image)
       .then(function(ref) {
         var modelId = ref.key;
