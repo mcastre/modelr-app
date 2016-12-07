@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc) {
+.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', 'PaintsSvc', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc, PaintsSvc) {
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
@@ -9,6 +9,8 @@ angular.module('modelrApp')
   model.supplies = ModelSuppliesSvc.getModelSupplies();
   model.paints = ModelPaintsSvc.getModelPaints();
   model.photos = ModelImageUploadSvc.getGalleryPhotos();
+
+  model.paintManufacturers = PaintsSvc.getPaints();
 
   model.slideIndex = 1;
   model.modelImage = '';

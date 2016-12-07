@@ -288,6 +288,13 @@ a {
     .form-control-transparent input:-moz-placeholder {
       color: #444; }
 
+.item-select select.select-control-transparent {
+  background: none;
+  color: white; }
+
+.item-select:after {
+  color: white; }
+
 .list-in-card .card-list-item {
   margin-bottom: 10px; }
 

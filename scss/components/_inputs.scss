@@ -52,7 +52,7 @@
     padding-left: 0;
     color: white;
     font-size: $app-base-font-size;
-    
+
     &::-webkit-input-placeholder {
       color: $app-medium-gray;
     }
@@ -66,4 +66,12 @@
       color: $app-medium-gray;
     }
   }
+}
+
+.item-select select.select-control-transparent {
+  background: none;
+  color: white;
+}
+.item-select:after {
+  color: white;
 }
