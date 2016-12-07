@@ -331,7 +331,10 @@ a.card-link-item {
   font-size: 24px; }
 
 .model-card {
-  padding-top: 0; }
+  padding-top: 0;
+  background-color: #f8f8f8; }
+  .model-card .item {
+    background-color: #f8f8f8; }
   .model-card .item.item-body {
     border: 0; }
 
@@ -376,15 +379,8 @@ a.card-link-item {
   margin-top: 10px;
   padding-bottom: 1px; }
   .color-bar-list li {
-    border: 1px solid rgba(0, 0, 0, 0.1);
     display: inline-block;
     height: 18px; }
-    .color-bar-list li:first-child {
-      border-top-left-radius: 4px;
-      border-bottom-left-radius: 4px; }
-    .color-bar-list li:last-child {
-      border-top-right-radius: 4px;
-      border-bottom-right-radius: 4px; }
 
 .login-header {
   margin-top: 4rem;
