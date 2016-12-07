@@ -5,7 +5,7 @@
   <li class="item item-avatar item-toggle" ng-repeat="paint in model.paints">
     <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
     <p><b>{{paint.title}}</b></p>
-    <small>{{paint.type}} - {{paint.hexKey}}</small>
+    <small>{{paint.type}} - {{paint.manufacturer}}</small>
     <label class="toggle toggle-dark">
        <input type="checkbox" ng-model="paint.inStock">
        <div class="track">

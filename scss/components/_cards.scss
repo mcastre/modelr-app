@@ -83,3 +83,12 @@ a.card-link-item {
     }
   }
 }
+
+.color-bar-list {
+  list-style: none;
+  li {
+    display: inline-block;
+    width: calc(100% / 8);
+    height: 8px;
+  }
+}

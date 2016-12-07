@@ -360,6 +360,13 @@ a.card-link-item {
     .card-secondary-nav li.is-active {
       opacity: 1; }
 
+.color-bar-list {
+  list-style: none; }
+  .color-bar-list li {
+    display: inline-block;
+    width: calc(100% / 8);
+    height: 8px; }
+
 .login-header {
   margin-top: 4rem;
   margin-bottom: 2rem; }
