@@ -1,4 +1,4 @@
-angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard'])
+angular.module('modelrApp', ['ionic', 'firebase', 'ngCordova', 'ionic.wizard', 'ionic-color-picker'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

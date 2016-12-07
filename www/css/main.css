@@ -225,6 +225,13 @@ a {
 
 .modal.backdrop-modal {
   background: rgba(0, 0, 0, 0.9); }
+  .modal.backdrop-modal .bar.bar-stable {
+    background: none;
+    border: 0; }
+    .modal.backdrop-modal .bar.bar-stable .title {
+      color: white; }
+  .modal.backdrop-modal .scroll-content {
+    background: none; }
 
 .login-form-wrapper .item-stacked-label {
   background-color: rgba(0, 0, 0, 0.1); }
@@ -261,6 +268,25 @@ a {
 
 .list-search-box {
   margin-bottom: 1rem; }
+
+.form-control-separated {
+  margin-top: 20px; }
+
+.form-control-transparent {
+  background: none;
+  padding-left: 0; }
+  .form-control-transparent input {
+    padding-left: 0;
+    color: white;
+    font-size: 16px; }
+    .form-control-transparent input::-webkit-input-placeholder {
+      color: #444; }
+    .form-control-transparent input::-moz-placeholder {
+      color: #444; }
+    .form-control-transparent input:-ms-input-placeholder {
+      color: #444; }
+    .form-control-transparent input:-moz-placeholder {
+      color: #444; }
 
 .list-in-card .card-list-item {
   margin-bottom: 10px; }

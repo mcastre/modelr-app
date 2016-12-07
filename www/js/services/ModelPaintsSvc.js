@@ -16,6 +16,7 @@ function modelPaintsSvc($firebaseArray, $stateParams) {
   }
 
   function addModelPaint(paint) {
+    var modelPaintsRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Paints');
     $firebaseArray(modelPaintsRef).$add(paint)
       .then(function(ref) {
         var modelId = ref.key;

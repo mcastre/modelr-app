@@ -40,3 +40,30 @@
 .list-search-box {
   margin-bottom: 1rem;
 }
+
+.form-control-separated {
+  margin-top: 20px;
+}
+
+.form-control-transparent {
+  background: none;
+  padding-left: 0;
+  input {
+    padding-left: 0;
+    color: white;
+    font-size: $app-base-font-size;
+    
+    &::-webkit-input-placeholder {
+      color: $app-medium-gray;
+    }
+    &::-moz-placeholder {
+      color: $app-medium-gray;
+    }
+    &:-ms-input-placeholder {
+      color: $app-medium-gray;
+    }
+    &:-moz-placeholder {
+      color: $app-medium-gray;
+    }
+  }
+}

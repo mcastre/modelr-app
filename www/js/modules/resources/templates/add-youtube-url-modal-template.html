@@ -1,0 +1,23 @@
+<div class="modal app-modal">
+  <header class="login-modal-header">
+    <div class="login-modal-subtitle">
+      <h3>Add YouTube Video</h3>
+      <p class="subtitle">Enter the embed URL from the YouTube video in the form below.</p>
+    </div>
+    <div class="close-modal-button button button-clear" ng-click="resources.closeAddYouTubeURLModal()"><span class="icon ion-close"></span></div>
+  </header>
+  <section class="login-form-wrapper">
+    <form name="newPaintForm">
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Embed URL</span>
+          <input type="text" ng-model="resources.video.url">
+        </label>
+      </div>
+      <div class="padding">
+        <button class="button button-block button-positive" ng-click="resources.addYouTubeVideo(resources.video)">Add Video</button>
+        <button class="button button-block button-stable" ng-click="resources.closeAddYouTubeURLModal()">Cancel</button>
+      </div>
+    </form>
+  </section>
+</div>

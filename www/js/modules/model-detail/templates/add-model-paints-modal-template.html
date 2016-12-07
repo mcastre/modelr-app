@@ -22,13 +22,15 @@
           <input type="text" ng-model="model.paint.type">
         </label>
         <label class="item item-input item-stacked-label">
-          <span class="input-label">Hex Key</span>
+          <span class="input-label">Product Key</span>
           <input type="text" ng-model="model.paint.hexKey">
         </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Swatch Color (hex)</span>
-          <input type="text" ng-model="model.paint.swatch">
-        </label>
+        <div class="item item-input-inset form-control-separated">
+          <label class="item-input-wrapper form-control-transparent">
+            <input type="text" ng-model="model.paint.swatch" placeholder="Swatch Color (#hex)">
+          </label>
+          <button class="button button-clear button-small button-light" color-picker color-mode="hsv" ng-model="model.paint.swatch" modal-title="Choose a color" modal-class="backdrop-modal">Or, choose color</button>
+        </div>
         <div class="item item-toggle">
           In Stock?
           <label class="toggle toggle-dark">

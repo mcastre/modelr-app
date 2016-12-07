@@ -58,7 +58,7 @@ angular.module('modelrApp')
         return true;
       }
     })
-  }
+  };
 
   model.accessCamera = function() {
     model.images = [];

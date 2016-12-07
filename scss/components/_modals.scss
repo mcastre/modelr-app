@@ -22,4 +22,14 @@
 }
 .modal.backdrop-modal {
   background: rgba(black, 0.9);
+  .bar.bar-stable {
+    background: none;
+    border: 0;
+    .title {
+      color: white;
+    }
+  }
+  .scroll-content {
+    background: none;
+  }
 }

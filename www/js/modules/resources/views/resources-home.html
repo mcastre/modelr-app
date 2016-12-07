@@ -1,5 +1,14 @@
-<ion-view view-title="Resources">
+<ion-view view-title="Resources ({{resources.userHasResources()}})">
   <ion-content class="padding has-tabs">
-    <p>Resources Content</p>
+    <div class="button-wrapper">
+      <button class="button ion-plus icon button-positive" ng-click="resources.openCategoryActionSheet()"></button>
+    </div>
+    <section class="home-models-view" ng-if="resources.userHasResources()">
+      <div class="list">
+        <a href="" class="item" ng-repeat="item in resources.allResources" ng-href="{{item.url}}" target="_blank">
+          {{item.url}}
+        </a>
+      </div>      
+    </section>
   </ion-content>
 </ion-view>
