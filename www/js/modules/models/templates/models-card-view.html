@@ -19,7 +19,7 @@
         <p class="card-list-value">{{model.manufacturer}}</p>
       </li>
       <li class="card-list-item">
-        <small class="card-list-label">Class</small>
+        <small class="card-list-label">Vehicle Type</small>
         <p class="card-list-value">{{model.classType}}</p>
       </li>
       <li class="card-list-item" ng-if="model.description">
@@ -28,12 +28,10 @@
       </li>
     </ul>
   </div>
-  <div class="item item-body">
+  <div class="item item-body item-no-padding-bottom">
     Paints <span class="card-item-count" ng-if="!model.Paints">0</span>
     <span class="card-item-count" ng-if="model.Paints">{{models.getModelPaintsCount(model.Paints)}}</span>
-    <ul class="color-bar-list">
-      <li ng-repeat="paint in model.Paints" style="background: {{paint.swatch}}"></li>
-    </ul>
+    <color-swatch-bar paints="model.Paints"></color-swatch-bar>
   </div>
   <div class="item item-body">
     Supplies

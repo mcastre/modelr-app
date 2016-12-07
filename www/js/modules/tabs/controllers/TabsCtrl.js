@@ -4,7 +4,7 @@ angular.module('modelrApp')
   var tabs = this;
 
   tabs.loadingProperties = {
-    template: 'Getting Your Models...',
+    template: 'Getting Your Models... <ion-spinner icon="crescent" class="spinner-light"></ion-spinner>',
     animation: 'fade-in',
     showBackdrop: true,
     maxWidth: 200,

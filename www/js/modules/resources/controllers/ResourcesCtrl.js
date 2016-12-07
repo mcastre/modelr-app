@@ -25,7 +25,7 @@ angular.module('modelrApp')
 
   // Loading
   resources.loadingProperties = {
-    template: 'Loading your resources...',
+    template: 'Loading your resources... <ion-spinner icon="crescent" class="spinner-light"></ion-spinner>',
     animation: 'fade-in',
     showBackdrop: true,
     maxWidth: 200,

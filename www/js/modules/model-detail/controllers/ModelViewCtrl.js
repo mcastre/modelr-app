@@ -1,10 +1,21 @@
 angular.module('modelrApp')
-.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', 'PaintsSvc', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc, PaintsSvc) {
+.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', 'PaintsSvc', 'AuthSvc', '$ionicLoading', '$timeout', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc, PaintsSvc, AuthSvc, $ionicLoading, $timeout) {
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
 
-  model.data = $firebaseObject(modelRef);
+  model.auth = AuthSvc;
+  model.data = {};
+
+  model.auth.$onAuthStateChanged(function(user) {
+    if (user) {
+      getModel(user);
+      model.user = user;
+    } else {
+      $ionicLoading.hide();
+      $state.go('login');
+    }
+  });
 
   model.supplies = ModelSuppliesSvc.getModelSupplies();
   model.paints = ModelPaintsSvc.getModelPaints();
@@ -21,6 +32,26 @@ angular.module('modelrApp')
   model.showMainView = true;
   model.showPaintsView = false;
 
+  // Loading
+  model.loadingProperties = {
+    template: 'Getting model... <ion-spinner icon="crescent" class="spinner-light"></ion-spinner>',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  };
+
+  $ionicLoading.show(model.loadingProperties);
+
+  function getModel(authData) {
+    return modelRef.on('value', function(snap) {
+      $timeout(function () {
+        $ionicLoading.hide();
+        model.data = $firebaseObject(modelRef);
+      });
+    });
+  }
+
   model.supplyItem = {
     name: ''
   };
@@ -33,6 +64,13 @@ angular.module('modelrApp')
     swatch: '',
     inStock: false
   };
+
+  model.paintPriorities = [
+    "Primary Color",
+    "Secondary Color",
+    "Highlights",
+    "Accents"
+  ];
 
   modelRef.on('value', function (snap) {
     model.modelImage = snap.val().modelImage;

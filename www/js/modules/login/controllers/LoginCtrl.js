@@ -9,7 +9,7 @@ angular.module('modelrApp')
   login.userName = '';
   login.newUserSetUp = false;
   login.loadingProperties = {
-    template: 'Logging In...',
+    template: 'Logging In... <ion-spinner icon="crescent" class="spinner-light"></ion-spinner>',
     animation: 'fade-in',
     showBackdrop: true,
     maxWidth: 200,

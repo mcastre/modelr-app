@@ -150,6 +150,9 @@ a {
     margin-top: 0;
     margin-bottom: 20px; }
 
+.item-no-padding-bottom {
+  padding-bottom: 0; }
+
 .login-logomark {
   margin: 1rem; }
   .login-logomark svg {
@@ -368,11 +371,20 @@ a.card-link-item {
       opacity: 1; }
 
 .color-bar-list {
-  list-style: none; }
+  list-style: none;
+  display: flex;
+  margin-top: 10px;
+  padding-bottom: 1px; }
   .color-bar-list li {
+    border: 1px solid rgba(0, 0, 0, 0.1);
     display: inline-block;
-    width: calc(100% / 8);
-    height: 8px; }
+    height: 18px; }
+    .color-bar-list li:first-child {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px; }
+    .color-bar-list li:last-child {
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px; }
 
 .login-header {
   margin-top: 4rem;
@@ -531,6 +543,16 @@ a.card-link-item {
 .zoomable-canvas {
   width: 100%;
   height: 100%; }
+
+.loading-container .loading {
+  width: 100%;
+  padding: 15px;
+  border-radius: 0; }
+
+.spinner svg {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle; }
 
 .wizard-first .scroll-content {
   background: none; }

@@ -6,7 +6,7 @@ angular.module('modelrApp')
 
   // Loading
   models.loadingProperties = {
-    template: 'Logging In...',
+    template: 'Logging In... <ion-spinner icon="crescent" class="spinner-light"></ion-spinner>',
     animation: 'fade-in',
     showBackdrop: true,
     maxWidth: 200,

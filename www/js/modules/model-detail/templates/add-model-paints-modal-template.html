@@ -36,6 +36,15 @@
           </label>
           <button class="button button-clear button-small button-light" color-picker color-mode="hsv" ng-model="model.paint.swatch" modal-title="Choose a color" modal-class="backdrop-modal">Or, choose color</button>
         </div>
+        <div class="item item-input item-select">
+          <span class="input-label">Color Priority</span>
+          <select class="select-control-transparent" ng-model="model.paint.priority">
+            <option value="">Choose one...</option>
+            <option ng-repeat="priority in model.paintPriorities">
+              {{priority}}
+            </option>
+          </select>
+        </div>
         <div class="item item-toggle">
           In Stock?
           <label class="toggle toggle-dark">
