@@ -1,7 +1,20 @@
 <div class="item" ng-if="!model.paints.length">
   <p>No Paints Added</p>
 </div>
-<ul class="list" ng-if="model.paints.length">
+<ion-list>
+  <ion-item class="item-avatar item-toggle" ng-repeat="paint in model.paints">
+    <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
+    <p><b>{{paint.title}}</b></p>
+    <small>{{paint.type}} - {{paint.manufacturer}}</small>
+    <label class="toggle toggle-dark">
+       <input type="checkbox" ng-model="paint.inStock">
+       <div class="track">
+         <div class="handle"></div>
+       </div>
+     </label>    
+  </ion-item>
+</ion-list>
+<!-- <ul class="list" ng-if="model.paints.length">
   <li class="item item-avatar item-toggle" ng-repeat="paint in model.paints">
     <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
     <p><b>{{paint.title}}</b></p>
@@ -13,5 +26,5 @@
        </div>
      </label>
   </li>
-</ul>
+</ul> -->
 <button class="button button-block button-clear button-positive" ng-click="model.openAddPaintModal()">Add Paint</button>

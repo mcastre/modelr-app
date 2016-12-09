@@ -1,6 +1,6 @@
 <div class="list card model-card" ng-repeat="(modelID, model) in models.allModels">
-  <div class="card-image-full">
-    <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%">
+  <div class="card-image-full" ng-class="{'has-default-background-cover': !model.modelImage}">
+    <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%" ng-if="model.modelImage">
   </div>
   <div class="item">
     <div class="card-title-wrapper">
@@ -44,7 +44,7 @@
         'status-awaiting-build': model.status === 'Awaiting Build',
         'status-in-progress': model.status === 'In Progress',
         'status-completed': model.status === 'Completed'}">
-      </span>{{model.status}}
+      </span>{{model.status}} <small ng-if="model.completedDate" class="small-date">({{model.completedDate | date}})</small>
     </span>
     <ul class="card-actions-right">
       <li>

@@ -60,6 +60,9 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  &.has-default-background-cover {
+    @extend %teal-daylight-background;
+  }
 }
 .view-basic {
   margin-top: 2rem;

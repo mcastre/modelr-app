@@ -1,38 +1,37 @@
-<ion-nav-view animation="slide-left-right">
-  <ion-view>
-    <ion-content class="layout-detail">
-      <div class="card-detail-header">
-        <a href="" ui-sref="models" class="close-icon"><i class="icon ion-close"></i></a>
+<ion-view>
+  <ion-content class="layout-detail">
+    <div class="card-detail-header">
+      <a href="" ui-sref="models" class="close-icon"><i class="icon ion-close"></i></a>
+    </div>
+    <!-- HAS MODEL IMAGE  -->
+    <header class="hero-image has-scrim" ng-if="model.modelImage">
+      <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%">
+      <div class="hero-bottom-actions">
+        <button class="button button-small button-dark icon-right change-image-button" ng-click="model.openCameraActionSheet()">Change Picture <i class="icon ion-camera"></i></button>
       </div>
-      <!-- HAS MODEL IMAGE  -->
-      <header class="hero-image has-scrim" ng-if="model.modelImage">
-        <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" width="100%">
-        <div class="hero-bottom-actions">
-          <button class="button button-small button-dark icon-right change-image-button" ng-click="model.openCameraActionSheet()">Change Picture <i class="icon ion-camera"></i></button>
-        </div>
-      </header>
-      <!-- NO MODEL IMAGE -->
-      <header class="hero-image has-gradient" ng-if="!model.modelImage">
-        <div class="icon-nav-bar">
-          <button class="button button-clear-center button-with-icon" ng-click="model.upload()">
-            <div class="icon-button-icon" ng-include="'img/camera-button-icon.svg'"></div>
-            <span class="icon-button-label">Add Picture</span>
-          </button>
-        </div>
-      </header>
-      <section class="card-detail-view">
-        <div class="list-header-bar">
-          <h1 class="list-header-title">{{model.data.title}}</h1>
-          <p class="list-header-subtitle">{{model.data.scale}}</p>
-          <p class="list-header-subtitle">{{model.data.status}}</p>
-        </div>
-        <div class="list model-detail-list">
-          <!-- MODEL NAV BAR -->
-          <ng-include src="'js/modules/model-detail/templates/model-nav-bar.html'"></ng-include>
-          <!-- MODEL VIEWS -->
-          <ng-include src="model.currentTab.url"></ng-include>
-        </div>        
-      </section>
-    </ion-content>
-  </ion-view>
-</ion-nav-view>
+    </header>
+    <!-- NO MODEL IMAGE -->
+    <header class="hero-image has-gradient" ng-if="!model.modelImage">
+      <div class="icon-nav-bar">
+        <button class="button button-clear-center button-with-icon" ng-click="model.upload()">
+          <div class="icon-button-icon" ng-include="'img/camera-button-icon.svg'"></div>
+          <span class="icon-button-label">Add Picture</span>
+        </button>
+      </div>
+    </header>
+    <section class="card-detail-view">
+      <div class="list-header-bar">
+        <h1 class="list-header-title">{{model.data.title}}</h1>
+        <p class="list-header-subtitle">{{model.data.scale}}</p>
+        <span ng-if="model.data.completedDate || model.data.status === 'Completed'" class="badge badge-white">Completed</span>
+        <p ng-if="!model.data.completedDate && model.data.status !== 'Completed'" class="list-header-subtitle">{{model.data.status}}</p>
+      </div>
+      <div class="list model-detail-list">
+        <!-- MODEL NAV BAR -->
+        <ng-include src="'js/modules/model-detail/templates/model-nav-bar.html'"></ng-include>
+        <!-- MODEL VIEWS -->
+        <ng-include src="model.currentTab.url"></ng-include>
+      </div>
+    </section>
+  </ion-content>
+</ion-view>

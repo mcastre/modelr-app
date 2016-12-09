@@ -1,36 +1,37 @@
-<div class="item item-icon-left">
+<div class="item item-icon-left item-button-right list-button-right-small">
   <i class="icon ion-clock"></i>
   <small>Date Started</small>
   <p>{{model.data.dateStarted | date}}</p>
+  <button class="button button-clear button-positive" ng-click="model.markModelAsComplete()">Mark as Complete</button>
 </div>
 
-<div class="item item-icon-left item-button-right" ng-if="!model.isEditModeStatus">
+<div class="item item-icon-left item-button-right list-button-right-small" ng-if="!model.isEditModeStatus">
   <span class="status-circle as-list-item" ng-class="{
     'status-awaiting-build': model.data.status === 'Awaiting Build',
     'status-in-progress': model.data.status === 'In Progress',
     'status-completed': model.data.status === 'Completed'}">
   </span>
   <small>Project Status</small>
-  <p>{{model.data.status}}</p>
-  <button class="button button-clear button-energized" ng-click="model.toggleEditModeStatus()">Edit</button>
+  <p>{{model.data.status}} <small class="small-date" ng-if="model.data.completedDate">({{model.data.completedDate | date}})</small></p>
+  <button class="button button-clear button-positive" ng-click="model.toggleEditModeStatus()">Edit</button>
 </div>
 <!-- STATUS EDIT MODE -->
 <ng-include src="'js/modules/model-detail/templates/edit-model-status.html'"></ng-include>
 
-<div class="item item-icon-left item-button-right" ng-if="!model.isEditModeClass">
+<div class="item item-icon-left item-button-right list-button-right-small" ng-if="!model.isEditModeClass">
   <i class="icon ion-ribbon-b"></i>
   <small>Vehicle Type</small>
   <p>{{model.data.classType}}</p>
-  <button class="button button-clear button-energized" ng-click="model.toggleEditModeClass()">Edit</button>
+  <button class="button button-clear button-positive" ng-click="model.toggleEditModeClass()">Edit</button>
 </div>
 <!-- CLASS EDIT MODE -->
 <ng-include src="'js/modules/model-detail/templates/edit-model-class.html'"></ng-include>
 
-<div class="item item-icon-left item-button-right" ng-if="!model.isEditModeManufacturer">
+<div class="item item-icon-left item-button-right list-button-right-small" ng-if="!model.isEditModeManufacturer">
   <i class="icon ion-pricetag"></i>
   <small>Manufacturer</small>
   <p>{{model.data.manufacturer}}</p>
-  <button class="button button-clear button-energized" ng-click="model.toggleEditModeManufacturer()">Edit</button>
+  <button class="button button-clear button-positive" ng-click="model.toggleEditModeManufacturer()">Edit</button>
 </div>
 <!-- MANUFACTURER EDIT MODE -->
 <ng-include src="'js/modules/model-detail/templates/edit-model-manufacturer.html'"></ng-include>

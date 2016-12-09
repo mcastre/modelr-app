@@ -219,6 +219,8 @@ angular.module('modelrApp')
     model.modal.hide();
   };
 
+  // MODEL GALLERY ----------------------------------------------
+
 
   $ionicModal.fromTemplateUrl('js/modules/model-detail/templates/gallery-slider-modal-template.html', function($ionicModal) {
     model.galleryModal = $ionicModal;
@@ -235,6 +237,13 @@ angular.module('modelrApp')
 
   model.closeGallerySlider = function () {
     model.galleryModal.hide();
+  };
+
+  model.markModelAsComplete = function() {
+    var completedDate = Date.now();
+    model.updateStatus('Completed');
+    modelRef.child('completedDate').set(completedDate);
+    console.log("Model marked as completed on ", completedDate);
   };
 
 }]);

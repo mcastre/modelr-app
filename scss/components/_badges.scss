@@ -1,0 +1,9 @@
+.badge {
+  &.badge-white {
+    background: white;
+    color: $app-primary-darker;
+    font-weight: normal;
+    font-size: 12px;
+    padding: 1px 5px;
+  }
+}
