@@ -167,6 +167,15 @@ a {
 .item-no-padding-bottom {
   padding-bottom: 0; }
 
+.item-has-full-text p {
+  overflow: auto;
+  text-overflow: initial;
+  white-space: initial; }
+
+.item-has-full-text .icon {
+  top: 18px;
+  height: 32px; }
+
 .login-logomark {
   margin: 1rem; }
   .login-logomark svg {

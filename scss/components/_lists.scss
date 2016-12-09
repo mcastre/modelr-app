@@ -46,3 +46,14 @@
 .item-no-padding-bottom {
   padding-bottom: 0;
 }
+.item-has-full-text {
+  p {
+    overflow: auto;
+    text-overflow: initial;
+    white-space: initial;
+  }
+  .icon {
+    top: 18px;
+    height: 32px;
+  }
+}
