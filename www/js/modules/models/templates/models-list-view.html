@@ -1,6 +1,6 @@
 <div class="list">
-  <a href="" class="item item-thumbnail-left" ui-sref="model({id: modelID})" ng-repeat="(modelID, model) in models.allModels">
-    <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image">
+  <a href="" class="item" ng-class="{'item-thumbnail-left': model.modelImage}" ui-sref="model({id: modelID})" ng-repeat="(modelID, model) in models.allModels">
+    <img ng-src="data:image/jpeg;base64,{{model.modelImage}}" alt="Model Image" ng-if="model.modelImage">
     <h2>{{model.title}}</h2>
     <p>{{model.builder}} - {{model.dateStarted | date}}</p>
     <span class="card-status">

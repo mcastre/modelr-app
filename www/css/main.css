@@ -123,7 +123,7 @@ a {
     margin-left: 3px; }
 
 .list-button-right-small .button {
-  font-size: 12px; }
+  font-size: 14px; }
 
 .card .list > .item {
   padding: 14px 0;
@@ -563,6 +563,9 @@ a.card-link-item {
   width: 22px;
   height: 22px;
   vertical-align: middle; }
+
+.no-margin-bottom {
+  margin-bottom: 0; }
 
 .wizard-first .scroll-content {
   background: none; }
