@@ -86,6 +86,7 @@ angular.module('modelrApp')
     var newUrl = video.url.replace(/['"]+/g, '');
     video.url = newUrl;
     AddResourceSvc.addYouTubeVideo(video, resources.user.uid);
+    resources.closeAddYouTubeURLModal();
   };
 
   resources.userHasResources = function () {

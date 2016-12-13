@@ -1,4 +1,4 @@
-<ion-view view-title="Resources ({{resources.userHasResources()}})">
+<ion-view view-title="Resources">
   <ion-content class="padding has-tabs">
     <div class="button-wrapper">
       <button class="button ion-plus icon button-positive" ng-click="resources.openCategoryActionSheet()"></button>
@@ -9,7 +9,8 @@
           Videos
         </div>
         <a href="" class="item" ng-repeat="item in resources.allResources" ng-href="{{item.url}}" target="_blank">
-          {{item.url}}
+          <h3>{{item.title}}</h3>
+          <small>{{item.url}}</small>
         </a>
         <div class="item item-divider">
           Paint Charts
