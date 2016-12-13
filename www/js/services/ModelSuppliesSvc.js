@@ -17,15 +17,17 @@ function ModelSuppliesSvc($firebaseArray, $stateParams) {
   }
 
   function addSupplyItem(item) {
+    var modelSuppliesRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Supplies');
     $firebaseArray(modelSuppliesRef).$add(item)
       .then(function(ref) {
         var modelId = ref.key;
-        supplies.$save(modelId);
+        $firebaseArray(modelSuppliesRef).$save(modelId);
         console.log('Supply Item added: ', item);
       });
   }
 
   function removeSupplyItem(item) {
+    var modelSuppliesRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Supplies');
     $firebaseArray(modelSuppliesRef).$remove(item)
       .then(function(ref) {
         console.log('Removed item: ', ref.key);
