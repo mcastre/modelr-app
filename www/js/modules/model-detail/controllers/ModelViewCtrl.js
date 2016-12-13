@@ -230,7 +230,6 @@ angular.module('modelrApp')
   });
 
   model.openGallerySlider = function (index) {
-    console.log(index);
     model.galleryModal.show();
     model.slideIndex = index;
   };

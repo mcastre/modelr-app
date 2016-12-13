@@ -10,17 +10,24 @@ function modelPaintsSvc($firebaseArray, $stateParams) {
     addModelPaint: addModelPaint
   };
 
+  function sanitizeInput(str) {
+    var newStr = str.replace(/\r?\n|\r/g, " ");
+    return newStr.trim();
+  }
+
   function getModelPaints() {
     var modelPaintsRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Paints');
     return $firebaseArray(modelPaintsRef);
   }
 
   function addModelPaint(paint) {
+    paint.priority = sanitizeInput(paint.priority);
+    paint.manufacturer = sanitizeInput(paint.manufacturer);
     var modelPaintsRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Paints');
     $firebaseArray(modelPaintsRef).$add(paint)
       .then(function(ref) {
         var modelId = ref.key;
-        paints.$save(modelId);
+        $firebaseArray(modelPaintsRef).$save(modelId);
         console.log('Paint saved successfully: ', modelId);
       });
   }
