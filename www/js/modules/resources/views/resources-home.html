@@ -4,11 +4,22 @@
       <button class="button ion-plus icon button-positive" ng-click="resources.openCategoryActionSheet()"></button>
     </div>
     <section class="home-models-view" ng-if="resources.userHasResources()">
-      <div class="list">
+      <div class="list divider-separated-list">
+        <div class="item item-divider">
+          Videos
+        </div>
         <a href="" class="item" ng-repeat="item in resources.allResources" ng-href="{{item.url}}" target="_blank">
           {{item.url}}
         </a>
-      </div>      
+        <div class="item item-divider">
+          Paint Charts
+        </div>
+        <a href="https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY" class="item" target="_blank">Tamiya Paint Charts</a>
+        <a href="http://www.acrylicosvallejo.com/en_US/downloads" class="item" target="_blank">Vallejo Paint Charts (PDF)</a>
+        <a href="http://www.humbrol.com/_assets/files/Humbrol-Wall-Chart.pdf" class="item" target="_blank">Humbrol Paint Charts (PDF)</a>
+        <a href="http://downloads.hobbico.com/misc/rmx/TES_Revell_Paint_Match_Guide.pdf" class="item" target="_blank">Revell Paint Charts (PDF)</a>
+        <a href="http://www.italeri.com/ItaleriAcrylicPaint-Conversion-Chart.pdf" class="item" target="_blank">Italeri Paint Charts (PDF)</a>
+      </div>
     </section>
   </ion-content>
 </ion-view>

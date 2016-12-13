@@ -125,6 +125,9 @@ a {
 .list-button-right-small .button {
   font-size: 14px; }
 
+.button.button-white {
+  color: white; }
+
 .card .list > .item {
   padding: 14px 0;
   font-size: 14px; }
@@ -175,6 +178,13 @@ a {
 .item-has-full-text .icon {
   top: 18px;
   height: 32px; }
+
+.divider-separated-list .item.item-divider {
+  color: #444;
+  margin-top: 10px; }
+
+.divider-separated-list .item {
+  color: #387ef5; }
 
 .login-logomark {
   margin: 1rem; }
@@ -429,7 +439,7 @@ a.card-link-item {
     font-size: 16px; }
   .login-modal-header .button-clear.button-clear {
     float: right;
-    color: white;
+    color: black;
     margin-top: -10px; }
 
 .bar {

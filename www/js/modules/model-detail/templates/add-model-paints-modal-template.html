@@ -7,6 +7,7 @@
     <div class="close-modal-button button button-clear" ng-click="model.closeAddPaintModal()"><span class="icon ion-close"></span></div>
   </header>
   <section class="login-form-wrapper">
+    <a class="button button-clear button-white" href="https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY" target="_blank">View Paint Charts</a>
     <form name="newPaintForm">
       <div class="list">
         <label class="item item-input item-stacked-label">
@@ -30,11 +31,12 @@
           <span class="input-label">Product Key</span>
           <input type="text" ng-model="model.paint.hexKey">
         </label>
+
         <div class="item item-input-inset form-control-separated">
           <label class="item-input-wrapper form-control-transparent">
             <input type="text" ng-model="model.paint.swatch" placeholder="Swatch Color (#hex)">
           </label>
-          <button class="button button-clear button-small button-light" color-picker color-mode="hsv" ng-model="model.paint.swatch" modal-title="Choose a color" modal-class="backdrop-modal">Or, choose color</button>
+          <button class="button button-clear button-small button-white" color-picker color-mode="hsv" ng-model="model.paint.swatch" modal-title="Choose a color" modal-class="backdrop-modal">Or, choose color</button>
         </div>
         <div class="item item-input item-select">
           <span class="input-label">Color Priority</span>

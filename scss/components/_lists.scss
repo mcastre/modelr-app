@@ -57,3 +57,11 @@
     height: 32px;
   }
 }
+.divider-separated-list .item.item-divider {
+  color: $app-medium-gray;
+  margin-top: 10px;
+}
+
+.divider-separated-list .item {
+  color: $app-link-blue;
+}
