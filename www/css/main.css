@@ -278,6 +278,20 @@ a {
 .popup-body {
   text-align: center; }
 
+.alert-as-notification .popup-head {
+  position: relative;
+  padding-top: 40px; }
+  .alert-as-notification .popup-head:after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 44%;
+    width: 32px;
+    height: 24px;
+    display: block;
+    background-image: url("../img/PARTY_PARROT.gif");
+    background-repeat: no-repeat; }
+
 .login-form-wrapper .item-stacked-label {
   background-color: rgba(0, 0, 0, 0.1); }
   .login-form-wrapper .item-stacked-label input {

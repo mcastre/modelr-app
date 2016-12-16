@@ -42,3 +42,23 @@
 .popup-body {
   text-align: center;
 }
+
+
+// NOTIFICATION POPUP
+.alert-as-notification {
+  .popup-head {
+    position: relative;
+    padding-top: 40px;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 10px;
+      left: 44%;
+      width: 32px;
+      height: 24px;
+      display: block;
+      background-image: url('../img/PARTY_PARROT.gif');
+      background-repeat: no-repeat;
+    }
+  }
+}
