@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.controller('InventoryPaintsCtrl', ['$scope', '$state', 'PaintsSvc', '$ionicModal', function InventoryPaintsCtrl($scope, $state, PaintsSvc, $ionicModal) {
+.controller('InventoryPaintsCtrl', ['$scope', '$state', 'PaintsSvc', '$ionicModal', '$ionicPopup', function InventoryPaintsCtrl($scope, $state, PaintsSvc, $ionicModal, $ionicPopup) {
 
   var paints = this;
   var paintManufacturers = [
@@ -194,13 +194,20 @@ angular.module('modelrApp')
   ]
 ;
 
-  paints.somePaints = PaintsSvc.getPaints();
+  paints.allPaints = PaintsSvc.getPaints();
   paints.manufacturers = PaintsSvc.getPaintManufacturers();
 
   // SEARCH PAINTS
   paints.search = {
     query: ''
   };
+
+  paints.sanitizeInput = function(str) {
+    var newStr = str.replace(/\r?\n|\r/g, " ");
+    return newStr.trim();
+  }
+
+  paints.filterManufacturers = '';
 
   // ADD PAINT
   $ionicModal.fromTemplateUrl('js/modules/inventory/templates/add-paint-modal-template.html', function($ionicModal) {
@@ -223,5 +230,20 @@ angular.module('modelrApp')
       PaintsSvc.addPaint(item);
     });
   };
+
+  paints.showConfirm = function(paint, id) {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Remove "' + paint.title + '" Paint',
+     template: 'This paint will be removed from your Inventory, but not for your model. Are you sure you wish to remove?'
+   });
+
+   confirmPopup.then(function(res) {
+     if(res) {
+       PaintsSvc.removeInventoryPaint(id);
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ };
 
 }]);

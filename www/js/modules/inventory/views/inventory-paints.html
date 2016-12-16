@@ -1,14 +1,28 @@
 <ion-view title="Paints">
   <ion-content class="padding has-header has-tabs">
     <button class="button button-block button-positive" ng-click="paints.openAddPaintModal()">Add Paint</button>
-    <div class="list">
-      <a class="item item-icon-right" ui-sref="inventory.paints.view({id: paint.$id})" ng-repeat="paint in paints.somePaints">
-        {{paint.name}}
-        <i class="icon ion-chevron-right"></i>
-      </a>
+    <div class="select-control-right">
+      <select ng-model="paints.filterManufacturers">
+        <option value="">Filter By Manufacturer</option>
+        <option ng-repeat="manu in paints.manufacturers">
+          {{manu.name}}
+        </option>
+      </select>
     </div>
+    <ion-list>
+      <ion-item
+        class="item-avatar"
+        item="paint"
+        can-swipe="true"
+        ng-repeat="paint in paints.allPaints | orderBy: 'title' | filter:paints.sanitizeInput(paints.filterManufacturers) track by $index">
+          <span class="circle-swatch" style="background-color: {{paint.swatch}}"></span>
+          <p><b>{{paint.title}}</b></p>
+          <small>{{paint.type}} - {{paint.manufacturer}}</small>
+          <ion-option-button class="button-assertive" ng-click="paints.showConfirm(paint, paint.$id)">Remove</ion-option-button>
+      </ion-item>
+    </ion-list>
     <!-- NO PAINTS IN COLLECTION -->
-    <section class="view-basic" ng-if="!paints.somePaints.length">
+    <section class="view-basic" ng-if="!paints.allPaints.length">
       <h2 class="view-subheader">No paints added...</h2>
       <p class="view-content">Click on the Add Paint button to add paints to the list.</p>
     </section>

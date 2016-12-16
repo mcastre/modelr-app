@@ -3,25 +3,24 @@ angular.module('modelrApp')
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
+  var paintsRef = firebase.database().ref().child('paintsCollection');
 
   model.auth = AuthSvc;
-  model.data = {};
+  model.data = {};  
 
   model.auth.$onAuthStateChanged(function(user) {
     if (user) {
       getModel(user);
+      model.supplies = ModelSuppliesSvc.getModelSupplies();
+      model.paints = ModelPaintsSvc.getModelPaints();
+      model.photos = ModelImageUploadSvc.getGalleryPhotos();
+      model.paintManufacturers = PaintsSvc.getPaintManufacturers();
       model.user = user;
     } else {
       $ionicLoading.hide();
       $state.go('login');
     }
   });
-
-  model.supplies = ModelSuppliesSvc.getModelSupplies();
-  model.paints = ModelPaintsSvc.getModelPaints();
-  model.photos = ModelImageUploadSvc.getGalleryPhotos();
-
-  model.paintManufacturers = PaintsSvc.getPaints();
 
   model.slideIndex = 1;
   model.modelImage = '';
@@ -205,6 +204,8 @@ angular.module('modelrApp')
   };
 
   model.addPaint = function (paint) {
+    var userId = model.auth.$getAuth().uid;
+
     ModelPaintsSvc.addModelPaint(paint);
 
     model.paint = {

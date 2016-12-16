@@ -75,3 +75,39 @@
 .item-select:after {
   color: white;
 }
+.select-control-right {
+  @include clearfix;
+  position: relative;
+  text-align: right;
+  padding: 10px 0;
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0 40px 0 16px;
+    max-width: 65%;
+    border: none;
+    background: none;
+    color: $app-medium-gray;
+    text-indent: .01px;
+    text-overflow: '';
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    direction: rtl;
+  }
+  &:after {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    color: $app-medium-gray;
+    content: "";
+    pointer-events: none;
+  }
+}

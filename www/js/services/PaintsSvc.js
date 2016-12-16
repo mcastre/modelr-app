@@ -1,5 +1,5 @@
 angular.module('modelrApp')
-.factory('PaintsSvc', ['$firebaseArray', '$state', function PaintsSvc($firebaseArray, $state) {
+.factory('PaintsSvc', ['$firebaseArray', '$state', '$firebaseObject', function PaintsSvc($firebaseArray, $state, $firebaseObject) {
 
   var paintsCollectionRef = firebase.database().ref().child('paintsCollection');
   var paints = $firebaseArray(paintsCollectionRef);
@@ -11,74 +11,63 @@ angular.module('modelrApp')
   var paintManufacturers = [
     {
       'name': '502 Abteilung Oils',
-      'paints': [
-        {
-          'type': 'TS',
-          'title': 'Red Brown',
-          'hexKey': '85001',
-          'swatch': '#725746',
-          'manufacturer': '502 Abteilung Oils',
-          'inStock': false
-        },
-        {
-          'type': 'TS',
-          'title': 'Dark Green',
-          'hexKey': '85001',
-          'swatch': '#334B3C',
-          'manufacturer': '502 Abteilung Oils',
-          'inStock': false
-        },
-        {
-          'type': 'TS',
-          'title': 'Dark Yellow',
-          'hexKey': '85003',
-          'swatch': '#B1A14F',
-          'manufacturer': '502 Abteilung Oils',
-          'inStock': false
-        },
-      ]
+      'paints': []
+    },
+    {
+      'name': 'AK Interactive',
+      'paints': []
+    },
+    {
+      'name': 'Alclad II',
+      'paints': []
     },
     {
       'name': 'Citadel',
-      'paints': [
-        {
-          'type': 'TS',
-          'title': 'Red Brown',
-          'hexKey': '85001',
-          'swatch': '#725746',
-          'manufacturer': 'Citadel',
-          'inStock': false
-        },
-        {
-          'type': 'TS',
-          'title': 'Dark Green',
-          'hexKey': '85001',
-          'swatch': '#334B3C',
-          'manufacturer': 'Citadel',
-          'inStock': false
-        }
-      ]
+      'paints': []
+    },
+    {
+      'name': 'Gravity Colors',
+      'paints': []
     },
     {
       'name': 'Humbrol',
-      'paints': [
-        {
-          'type': 'TS',
-          'title': 'Red Brown',
-          'hexKey': '85001',
-          'swatch': '#725746',
-          'manufacturer': 'Humbrol',
-          'inStock': false
-        },
-        {
-          'type': 'TS',
-          'title': 'Dark Green',
-          'hexKey': '85001',
-          'swatch': '#334B3C',
-          'manufacturer': 'Humbrol',
-          'inStock': false
-        }
-      ]
+      'paints': []
+    },
+    {
+      'name': 'Italeri Acrylics',
+      'paints': []
+    },
+    {
+      'name': 'MIG Productions',
+      'paints': []
+    },
+    {
+      'name': 'Model Master',
+      'paints': []
+    },
+    {
+      'name': 'Mr. Color',
+      'paints': []
+    },
+    {
+      'name': 'Revell Color',
+      'paints': []
+    },
+    {
+      'name': 'Tamiya Paints',
+      'paints': []
+    },
+    {
+      'name': 'Testors',
+      'paints': []
+    },
+    {
+      'name': 'Vallejo',
+      'paints': []
+    },
+    {
+      'name': 'Windsor & Newton',
+      'paints': []
     }
   ];
 
@@ -98,9 +87,32 @@ angular.module('modelrApp')
     return paints.length;
   }
 
-  function addPaint (paint) {
-    paints.$add(paint).then(function(ref) {
-      console.log("Paint added: ", paint);
+  function sanitizeInput(str) {
+    var newStr = str.replace(/\r?\n|\r/g, " ");
+    return newStr.trim();
+  }
+
+  function addPaintToInventory(paint, userID, pathId) {
+    var root = firebase.database().ref();
+    var id = root.child('paintsCollection').push();
+
+    id.set(angular.copy(paint), function (error) {
+      if (!error) {
+        var name = id.key;
+        root.child('users/' + userID + '/paints/' + name).set(true);
+        console.log('Added paint to inventory ---- ', paint);
+        id.once('value', function (snap) {
+          var data = snap.exportVal();
+        });
+      }
+    });
+  }
+
+  function removeInventoryPaint(id) {
+    var paintsRef = firebase.database().ref().child('paintsCollection/' + id);
+    var obj = $firebaseObject(paintsRef);
+    obj.$remove().then(function(ref) {
+      console.log('Removed paint from inventory', id);
     });
   }
 
@@ -109,6 +121,7 @@ angular.module('modelrApp')
     getModelPaints: getModelPaints,
     getPaintsCount: getPaintsCount,
     getPaintManufacturers: getPaintManufacturers,
-    addPaint: addPaint
+    addPaintToInventory: addPaintToInventory,
+    removeInventoryPaint: removeInventoryPaint
   }
 }]);

@@ -269,6 +269,15 @@ a {
   .modal.backdrop-modal .scroll-content {
     background: none; }
 
+.backdrop-modal .login-modal-header .button-clear.button-clear {
+  color: white; }
+
+.popup-container .popup {
+  width: 320px; }
+
+.popup-body {
+  text-align: center; }
+
 .login-form-wrapper .item-stacked-label {
   background-color: rgba(0, 0, 0, 0.1); }
   .login-form-wrapper .item-stacked-label input {
@@ -331,6 +340,46 @@ a {
 .item-select:after {
   color: white; }
 
+.select-control-right {
+  *zoom: 1;
+  position: relative;
+  text-align: right;
+  padding: 10px 0; }
+  .select-control-right:before, .select-control-right:after {
+    display: table;
+    content: "";
+    line-height: 0; }
+  .select-control-right:after {
+    clear: both; }
+  .select-control-right select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0 40px 0 16px;
+    max-width: 65%;
+    border: none;
+    background: none;
+    color: #444;
+    text-indent: .01px;
+    text-overflow: '';
+    white-space: nowrap;
+    font-size: 14px;
+    cursor: pointer;
+    direction: rtl; }
+  .select-control-right:after {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    color: #444;
+    content: "";
+    pointer-events: none; }
+
 .list-in-card .card-list-item {
   margin-bottom: 10px; }
 
@@ -382,7 +431,7 @@ a.card-link-item {
     padding: 16px; }
     .card-detail-header .close-icon .icon {
       color: white;
-      font-size: 16px; }
+      font-size: 20px; }
 
 .card-detail-view {
   position: relative;

@@ -2,6 +2,7 @@ angular.module('modelrApp')
 .controller('ModelsListCtrl', ['$state', 'AuthSvc', '$ionicLoading', '$firebaseArray', 'LoginSvc', '$timeout', '$cordovaToast', 'ModelPaintsSvc', function ModelsListCtrl ($state, AuthSvc, $ionicLoading, $firebaseArray, LoginSvc, $timeout, $cordovaToast, ModelPaintsSvc) {
   var models = this;
   var modelsRef = firebase.database().ref().child('modelsCollection');
+  var paintsRef = firebase.database().ref().child('paintsCollection');
   models.allModels = {};
 
   // Loading
@@ -29,11 +30,9 @@ angular.module('modelrApp')
     });
   }
 
-
   AuthSvc.$onAuthStateChanged(function(authData) {
     if (authData) {
       getUserModels(authData);
-      console.log('Logged in', authData);
       $cordovaToast.show('Signed in as: ' + authData.email, 'short', 'bottom');
     } else {
       $ionicLoading.hide();
