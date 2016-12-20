@@ -208,15 +208,6 @@ angular.module('modelrApp')
 
     ModelPaintsSvc.addModelPaint(paint);
 
-    model.paint = {
-      title: '',
-      manufacturer: '',
-      type: '',
-      hexKey: '',
-      swatch: '',
-      inStock: false
-    };
-
     model.modal.hide();
   };
 

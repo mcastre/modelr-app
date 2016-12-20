@@ -1,6 +1,11 @@
 <ion-modal-view class="app-modal">
   <ion-header-bar>
-    <button target="_blank" class="button button-clear button-stable" ng-click="model.openPaintCharts('https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY', '_system')">Paint Charts...</button>
+    <open-link-in-app-browser
+      url="'https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY'",
+      target="'_system'"
+      link-label="Paint Charts...">
+    </open-link-in-app-browser>
+    <!-- <button target="_blank" class="button button-clear button-stable" ng-click="model.openPaintCharts('https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY', '_system')">Paint Charts...</button> -->
     <h1 class="title">Add New Paint</h1>
     <button class="button button-clear button-stable" ng-click="model.closeAddPaintModal()">Cancel</button>
   </ion-header-bar>

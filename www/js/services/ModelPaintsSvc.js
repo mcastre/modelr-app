@@ -15,6 +15,17 @@ function modelPaintsSvc($firebaseArray, $stateParams, $timeout, AuthSvc, PaintsS
     return newStr.trim();
   }
 
+  function clearPaintsForm(paint) {
+    return paint = {
+      title: '',
+      manufacturer: '',
+      type: '',
+      hexKey: '',
+      swatch: '',
+      inStock: false
+    };
+  }
+
   function getModelPaints() {
     var modelPaintsRef = firebase.database().ref().child('modelsCollection/' + $stateParams.id + '/Paints');
     return $firebaseArray(modelPaintsRef);
@@ -32,6 +43,7 @@ function modelPaintsSvc($firebaseArray, $stateParams, $timeout, AuthSvc, PaintsS
         var modelId = ref.key;
         $firebaseArray(modelPaintsRef).$save(modelId);
         PaintsSvc.addPaintToInventory(paint, user.uid, modelId);
+        clearPaintsForm(paint);
         NotificationSvc.add('Paint Added!');
         console.log('Paint saved successfully: ', modelId);
       });
