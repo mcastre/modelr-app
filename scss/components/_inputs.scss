@@ -1,5 +1,5 @@
 .login-form-wrapper .item-stacked-label {
-  background-color: rgba(black, 0.1);
+  background: none;
   input {
     background: none;
   }
@@ -9,7 +9,7 @@
 }
 .wizard-form-input {
   .item {
-    background-color: rgba(black, 0.2);
+    background-color: rgba(black, 0.1);
     border: 0;
     -webkit-border-radius: 4px;
     border-radius: 4px;

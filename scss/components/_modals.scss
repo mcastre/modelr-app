@@ -1,8 +1,12 @@
 .login-form-wrapper {
   margin-top: 1rem;
   .item {
-    background-color: rgba(black, 0.1);
+    background: none;
     border: 0;
+    border-bottom: 1px solid rgba(black, 0.1);
+  }
+  .item.has-top-border {
+    border-top: 1px solid rgba(black, 0.1);
   }
   .item-input input {
     color: white;
@@ -14,11 +18,37 @@
 .modal.modal-top-peek {
   margin-top: 2rem;
 }
+.modal-subtitle {
+  color: $app-medium-gray;
+  text-align: center;
+  padding: 20px 10px;
+  p {
+    font-size: 14px;
+    margin-bottom: 0;
+  }
+}
 .modal.login-modal {
   @extend %teal-daylight-background;
 }
 .modal.app-modal {
   @extend %teal-daylight-background;
+  .bar {
+    background: rgba(0,0,0,0.1);
+    border: 0;
+    .title {
+      color: $app-medium-gray;
+    }
+    .button {
+      color: white;
+      font-size: 14px;
+    }
+  }
+  .scroll-content {
+    background: none;
+  }
+  .login-form-wrapper {
+    margin-top: 0;
+  }
 }
 .modal.backdrop-modal {
   background: rgba(black, 0.9);

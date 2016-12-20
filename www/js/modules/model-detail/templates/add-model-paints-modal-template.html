@@ -1,13 +1,10 @@
-<div class="modal app-modal">
-  <header class="login-modal-header">
-    <div class="login-modal-subtitle">
-      <h3>Add Paint</h3>
-      <p class="subtitle">Enter the paint information.</p>
-    </div>
-    <div class="close-modal-button button button-clear" ng-click="model.closeAddPaintModal()"><span class="icon ion-close"></span></div>
-  </header>
-  <section class="login-form-wrapper">
-    <a class="button button-clear button-white" href="https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY" target="_blank">View Paint Charts</a>
+<ion-modal-view class="app-modal">
+  <ion-header-bar>
+    <button target="_blank" class="button button-clear button-stable" ng-click="model.openPaintCharts('https://www.tamiyausa.com/articles/feature.php?article-id=72#.WFBoEaIrJTY', '_system')">Paint Charts...</button>
+    <h1 class="title">Add New Paint</h1>
+    <button class="button button-clear button-stable" ng-click="model.closeAddPaintModal()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="login-form-wrapper">
     <form name="newPaintForm">
       <div class="list">
         <label class="item item-input item-stacked-label">
@@ -56,13 +53,11 @@
             </div>
           </label>
         </div>
-        
+
       </div>
       <div class="padding">
-        <button class="button button-block button-positive" ng-click="model.addPaint(model.paint)">Add Paint</button>
-        <button class="button button-block button-stable" ng-click="model.closeAddPaintModal()">Cancel</button>
-        <button class="button button-clear button-light" ng-click="model.clearPaintForm()">Clear</button>
+        <button class="button button-block button-stable" ng-click="model.addPaint(model.paint)">Add Paint</button>
       </div>
     </form>
-  </section>
-</div>
+  </ion-content>
+</ion-modal-view>

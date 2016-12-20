@@ -1,15 +1,17 @@
-<div class="modal login-modal">
-  <header class="login-modal-header">
-    <div class="login-modal-subtitle">
-      <p class="subtitle" ng-if="!login.newUserSetUp">Enter your email and password to sign in.</p>
-      <p class="subtitle" ng-if="login.newUserSetUp">
+<ion-modal-view class="app-modal">
+  <ion-header-bar>
+    <h1 class="title" ng-if="login.newUserSetUp">New Account</h1>
+    <h1 class="title" ng-if="!login.newUserSetUp">Sign In</h1>
+    <button class="button button-clear button-stable" ng-click="login.closeLoginModal()">Cancel</button>
+  </ion-header-bar>
+  <ion-content class="login-form-wrapper">
+    <div class="modal-subtitle">
+      <p ng-if="!login.newUserSetUp">Enter your email and password to sign in.</p>
+      <p ng-if="login.newUserSetUp">
         Enter your email and password to create a new account in Modelr. <br>
         You can also sign up with Facebook by clicking <a href="" ng-click="login.facebookLogin()">here.</a>
       </p>
     </div>
-    <div class="close-modal-button button button-clear" ng-click="login.closeLoginModal()"><span class="icon ion-close"></span></div>
-  </header>
-  <section class="login-form-wrapper">
     <form name="newAccountForm">
       <div class="list">
         <label class="item item-input item-stacked-label" ng-if="login.newUserSetUp">
@@ -30,5 +32,5 @@
         <button class="button button-block button-stable" ng-click="login.signUp(login.userName)" ng-if="login.newUserSetUp">Sign Up</button>
       </div>
     </form>
-  </content>
-</div>
+  </ion-content>
+</ion-modal-view>

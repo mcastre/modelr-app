@@ -1,12 +1,12 @@
 angular.module('modelrApp')
-.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', 'PaintsSvc', 'AuthSvc', '$ionicLoading', '$timeout', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc, PaintsSvc, AuthSvc, $ionicLoading, $timeout) {
+.controller('ModelViewCtrl', ['$scope', '$state', '$firebaseObject', '$stateParams', '$cordovaCamera', '$ionicActionSheet', '$firebaseArray', '$ionicModal', 'ModelSuppliesSvc', 'ModelPaintsSvc', 'ModelImageUploadSvc', 'PaintsSvc', 'AuthSvc', '$ionicLoading', '$timeout', '$cordovaInAppBrowser', function ModelViewCtrl($scope, $state, $firebaseObject, $stateParams, $cordovaCamera, $ionicActionSheet, $firebaseArray, $ionicModal, ModelSuppliesSvc, ModelPaintsSvc, ModelImageUploadSvc, PaintsSvc, AuthSvc, $ionicLoading, $timeout, $cordovaInAppBrowser) {
   var model = this;
   var pathID = $stateParams.id;
   var modelRef = firebase.database().ref().child('modelsCollection/' + pathID);
   var paintsRef = firebase.database().ref().child('paintsCollection');
 
   model.auth = AuthSvc;
-  model.data = {};  
+  model.data = {};
 
   model.auth.$onAuthStateChanged(function(user) {
     if (user) {
@@ -218,6 +218,10 @@ angular.module('modelrApp')
     };
 
     model.modal.hide();
+  };
+
+  model.openPaintCharts = function(url, target) {
+    return $cordovaInAppBrowser.open(url, target);
   };
 
   // MODEL GALLERY ----------------------------------------------

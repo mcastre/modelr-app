@@ -249,8 +249,11 @@ a {
 .login-form-wrapper {
   margin-top: 1rem; }
   .login-form-wrapper .item {
-    background-color: rgba(0, 0, 0, 0.1);
-    border: 0; }
+    background: none;
+    border: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .login-form-wrapper .item.has-top-border {
+    border-top: 1px solid rgba(0, 0, 0, 0.1); }
   .login-form-wrapper .item-input input {
     color: white; }
   .login-form-wrapper .item-floating-label .input-label.has-input {
@@ -258,6 +261,29 @@ a {
 
 .modal.modal-top-peek {
   margin-top: 2rem; }
+
+.modal-subtitle {
+  color: #444;
+  text-align: center;
+  padding: 20px 10px; }
+  .modal-subtitle p {
+    font-size: 14px;
+    margin-bottom: 0; }
+
+.modal.app-modal .bar {
+  background: rgba(0, 0, 0, 0.1);
+  border: 0; }
+  .modal.app-modal .bar .title {
+    color: #444; }
+  .modal.app-modal .bar .button {
+    color: white;
+    font-size: 14px; }
+
+.modal.app-modal .scroll-content {
+  background: none; }
+
+.modal.app-modal .login-form-wrapper {
+  margin-top: 0; }
 
 .modal.backdrop-modal {
   background: rgba(0, 0, 0, 0.9); }
@@ -293,7 +319,7 @@ a {
     background-repeat: no-repeat; }
 
 .login-form-wrapper .item-stacked-label {
-  background-color: rgba(0, 0, 0, 0.1); }
+  background: none; }
   .login-form-wrapper .item-stacked-label input {
     background: none; }
 
@@ -301,7 +327,7 @@ a {
   margin: 2rem 0; }
 
 .wizard-form-input .item {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   border: 0;
   -webkit-border-radius: 4px;
   border-radius: 4px; }
@@ -507,11 +533,6 @@ a.card-link-item {
 
 .bar {
   background-image: none !important; }
-
-.login-modal-subtitle {
-  float: left;
-  width: 75%;
-  color: #444; }
 
 .bar-transparent {
   background-color: rgba(255, 255, 255, 0);
