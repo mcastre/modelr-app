@@ -259,9 +259,6 @@ a {
   .login-form-wrapper .item-floating-label .input-label.has-input {
     color: rgba(255, 255, 255, 0.5); }
 
-.modal.modal-top-peek {
-  margin-top: 2rem; }
-
 .modal-subtitle {
   color: #444;
   text-align: center;
