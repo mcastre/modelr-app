@@ -4,8 +4,8 @@ angular.module('modelrApp')
   var dateNow = new Date();
   var provider = new firebase.auth.FacebookAuthProvider();
 
-  login.email = '';
-  login.password = '';
+  login.email = 'mcastre3@gmail.com';
+  login.password = 'modeller123';
   login.userName = '';
   login.newUserSetUp = false;
   login.loadingProperties = {

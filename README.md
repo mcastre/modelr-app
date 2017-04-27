@@ -18,7 +18,7 @@ gulp serve
 
 * Build iOS and Android
 ```
-ionic build iOS
+ionic build ios
 ionic build android
 ```
 
